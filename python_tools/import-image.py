@@ -11,7 +11,7 @@ def main(_, file_path,
     print(sys.argv)
     print(file_path)
     dir_name, file_name = os.path.split(os.path.abspath(file_path))
-    dest_dir = os.path.join(os.path.dirname(__file__), '..', '_images')
+    dest_dir = os.path.join(os.path.dirname(__file__), '..', 'images')
     image_id = str(uuid.uuid4())[:8]
     dest_filename = os.path.join(dest_dir, date_string + '_' + image_id + '_' + file_name)
     with Image.open(file_path) as img:
