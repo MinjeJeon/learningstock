@@ -2,6 +2,9 @@
 title: image-test
 categories:
 - test
+tags:
+- test
+- image
 layout: post
 ---
 
