@@ -1,0 +1,5 @@
+#!/bin/sh
+python3 ~/learningstock/python_tools/import-image.py $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS
+
+
+
