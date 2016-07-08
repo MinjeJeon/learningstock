@@ -1,13 +1,12 @@
 import os
 import sys
 import uuid
-import base64
 from PIL import Image
 import datetime 
 
 def main(_, file_path,
          date_string = datetime.date.today().strftime('%Y%m%d'),
-         max_width = 800):
+         max_width = 800, *args):
     print(sys.argv)
     print(file_path)
     dir_name, file_name = os.path.split(os.path.abspath(file_path))
@@ -25,6 +24,4 @@ def main(_, file_path,
 
 if __name__ == '__main__':
     sys.exit(int(main(*sys.argv) or 0))
-
-
-
+    
