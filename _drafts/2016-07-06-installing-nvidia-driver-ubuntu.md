@@ -7,6 +7,7 @@ tags:
 - linux
 - ubuntu
 layout: post
+published: false
 ---
 
 안되는 방법이 많이 올라와 있다.
