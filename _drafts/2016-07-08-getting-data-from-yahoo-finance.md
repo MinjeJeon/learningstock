@@ -10,4 +10,10 @@ tags:
 layout: post
 ---
 
-안농하세요!
+
+주가정보를 수집하기 위해서는
+
+```bash
+$ pip3 install yahoo-finance
+```
+
