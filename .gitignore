@@ -3,3 +3,4 @@ _site
 .jekyll-metadata
 .vscode
 .ipynb_checkpoints
+.DS_Store
