@@ -10,11 +10,13 @@ pre, code {
     font-family: Consolas, 'Lucida Console', 'Bitstream Vera Sans Mono', monaco, monospace;
     padding-bottom: 0.5em;
     margin-bottom: 0.6em;
+    background-color: #F9F9F9; /* colorful  */
 }
 
 pre, code, .highlight {
     padding-bottom: 0.6em;
     margin-bottom: 0.6em;
+    background-color: #F9F9F9; /* colorful  */
 }
 
 figure {
@@ -27,6 +29,21 @@ figure > img {
     display: block;
 }
 
-figcaption {
+table.dataframe  {
+    border: 1px solid black;
+    border-collapse: collapse;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
     font-size: $small-font-size;
+
+    th {
+        text-align: center;
+    }
+
+    td, th {
+        padding-left: 0.3em;
+        padding-right: 0.3em;
+    }
 }
+
