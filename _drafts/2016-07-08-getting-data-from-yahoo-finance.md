@@ -16,13 +16,16 @@ layout: post
 주가정보를 수집
 
 ## Yahoo Finance API 설치
+
 ```bash
 $ pip install yahoo-finance
 ```
 pip를 이용해 쉽게 설치할 수 있다.
 
 ## Yahoo Finance API 사용하기
+
 Yahoo Finance API
+
 ```python
 import pandas as pd
 from pandas import DataFrame, Series
