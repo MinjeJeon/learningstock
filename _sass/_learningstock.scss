@@ -16,3 +16,17 @@ pre, code, .highlight {
     padding-bottom: 0.6em;
     margin-bottom: 0.6em;
 }
+
+figure {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+
+figure > img {
+    display: block;
+}
+
+figcaption {
+    font-size: $small-font-size;
+}

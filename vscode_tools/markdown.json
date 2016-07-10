@@ -28,5 +28,14 @@
 			"published: true",
 			"---"
 		]
+	},
+	"Insert image with caption" :{
+		"prefix": "imgcaption",
+		"body": [
+			"{% include image.html",
+   			"	src='${src}'",
+			"   alt='${alt_text}'",
+			"   caption='${caption_text}' %}"
+		]
 	}
 }
