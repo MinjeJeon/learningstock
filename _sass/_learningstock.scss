@@ -1,3 +1,5 @@
+
+
 h2, h3, h4, h5, h6,
 {
     margin-top: 1em;
@@ -7,17 +9,19 @@ p, blockquote{
     margin-bottom: 0.5em;
 }
 pre, code {
-    font-family: Consolas, 'Lucida Console', 'Bitstream Vera Sans Mono', monaco, monospace;
+    font-family: $monospace-font-family;
     padding-bottom: 0.5em;
     margin-bottom: 0.6em;
     background-color: #F9F9F9; /* colorful  */
 }
 
+/* 
 pre, code, .highlight {
     padding-bottom: 0.6em;
     margin-bottom: 0.6em;
-    background-color: #F9F9F9; /* colorful  */
+    background-color: #F9F9F9; colorful 
 }
+ */
 
 figure {
     margin-left: auto;
@@ -36,6 +40,7 @@ table.dataframe  {
     margin-left: auto;
     margin-right: auto;
     font-size: $small-font-size;
+    overflow-x: auto;
 
     th {
         text-align: center;
@@ -47,3 +52,28 @@ table.dataframe  {
     }
 }
 
+.ipython {
+    display : block;
+    font-family: $monospace-font-family;
+    figure { 
+        display: block;
+        margin-left: 1em;
+        margin-right : 0px;
+
+        pre {margin: 0}
+    }
+    .code {
+        margin: 0px;
+    }
+    .prompt {
+        clear: both;
+        padding: 8px 12px;
+        float: left;
+    }
+    .result {
+        display: block;
+        padding: 8px 24px;
+    }
+    .in, .out{
+    }
+}
