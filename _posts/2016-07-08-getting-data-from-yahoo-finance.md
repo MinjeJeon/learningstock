@@ -120,9 +120,11 @@ Date
 
 ## 더 쉬운 방법
 pandas-datareader를 설치하면 지금까지 과정을 한방에 할 수 있다.
+
 ```bash
 $ pip install pandas-datareader
 ```
+
 이제 데이터 데려오기만 하면 된다. pip로 설치할 때는 pandas-datareader, import할 때는 pandas_datareader임에 주의;;
 
 ```python
