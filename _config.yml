@@ -8,7 +8,6 @@ collections:
   uploads:
     title: Uploads
     output: true
-email: i@minje.kr
 description: 금융정보 분석 및 기계학습을 다루는 블로그입니다
 baseurl: "/learningstock"
 url: https://minjejeon.github.io
