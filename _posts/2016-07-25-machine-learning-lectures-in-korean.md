@@ -1,0 +1,18 @@
+---
+title: 한글로 된 머신러닝 강좌
+date: 2016-07-25 22:30
+categories:
+- 머신러닝
+tags:
+- 강좌
+- 한글
+layout: post
+---
+
+인터넷 찾다가 한글로 된 머신러닝 강좌가 있어서 링크
+
+{% include youtube.html
+    src='qPMeuL2LIqY'
+    caption='우왕굿' %}
+
+지금까지 본거중에 귀에 제일 잘들어온다 ㅜㅜ

@@ -1,0 +1,1 @@
+C:\Ruby23-x64\bin\jekyll serve --watch --source C:\dev\learningstock\
