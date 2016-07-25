@@ -42,8 +42,9 @@
 		"prefix": "youtube",
 		"body": [
 			"{% include youtube.html",
-   			"	src='${src}'",
-			"    caption='${caption_text}' %}"
+   			"	src='${youtube_video_ID}'",
+			"   alt='${alt_text}'",
+			"   caption='${caption_text}' %}"
 		]
 	}
 

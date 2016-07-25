@@ -13,6 +13,7 @@ layout: post
 
 {% include youtube.html
     src='qPMeuL2LIqY'
-    caption='우왕굿' %}
+   alt='머신러닝 용어, 개념 설명'
+   caption='' %}
 
 지금까지 본거중에 귀에 제일 잘들어온다 ㅜㅜ
