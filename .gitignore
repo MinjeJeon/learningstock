@@ -5,3 +5,5 @@ _drafts/
 .vscode
 .ipynb_checkpoints
 .DS_Store
+.python_tools
+.tools
