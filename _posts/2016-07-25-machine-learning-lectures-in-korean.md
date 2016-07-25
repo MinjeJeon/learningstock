@@ -9,9 +9,10 @@ tags:
 layout: post
 ---
 
-## 오잉
+인터넷 찾다가 한글로 된 머신러닝 강좌가 있어서 링크
 
 {% include youtube.html
     src='qPMeuL2LIqY'
     caption='우왕굿' %}
 
+지금까지 본거중에 귀에 제일 잘들어온다 ㅜㅜ
