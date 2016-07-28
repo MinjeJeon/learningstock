@@ -1,4 +1,6 @@
-<figure>
-    <a href="http://www.youtube.com/watch?v={{ include.src }}" title="{{ include.alt }}"><img src="http://img.youtube.com/vi/{{ include.src }}/0.jpg" alt="{{ include.alt }}" /></a>
-    <figcaption>{{ include.caption }}</figcaption>
-</figure>
+<div youtube-src="{{ include.src }}" class="youtube-video">
+    <figure>
+        <a href="http://www.youtube.com/watch?v={{ include.src }}" title="{{ include.alt }}"><img src="http://img.youtube.com/vi/{{ include.src }}/0.jpg" alt="{{ include.alt }}" /></a>
+        <figcaption>{{ include.caption }}</figcaption>
+    </figure>
+</div>
