@@ -51,7 +51,8 @@ div .youtube-video {
 
 .youtube-video iframe,
 .youtube-video object,
-.youtube-video embed {
+.youtube-video embed,
+.youtube-video figure, {
     position: absolute;
     top: 0;
     left: 0;
