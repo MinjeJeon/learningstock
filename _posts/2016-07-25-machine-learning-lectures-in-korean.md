@@ -9,7 +9,7 @@ tags:
 layout: post
 ---
 
-인터넷 찾다가 한글로 된 머신러닝 강좌가 있어서 링크
+유튜브에 나온 머신러닝 강좌
 
 {% include youtube.html
     src='qPMeuL2LIqY'

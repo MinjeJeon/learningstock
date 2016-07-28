@@ -14,7 +14,7 @@ published: true
 
 근데 g++를 설치하고 theano를 임포트하면 에러가 뜨는데, libpython이 python 3.5용으로 아직 올라오지 않아서 그렇단다.
 
-이틀 전에 github에 방법이 올라와서 소개한다. 이하 내용은 아래 링크의 번역이다.
+이틀 전에 github에 방법이 올라와서 소개한다. 이하 내용은 아래 링크의 번역이다.\\
 <https://github.com/Theano/Theano/issues/3376#issuecomment-235034897>
 
 1. mingw 설치\\
