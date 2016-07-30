@@ -1,5 +1,5 @@
 ---
-title: 이미지 캡션 테스트
+title: 레이아웃 테스트
 categories:
 - test
 tags:
@@ -20,3 +20,7 @@ published: true
    alt='alt_text'
    caption='caption_text' %}
 
+{% include youtube.html
+   src='kE9ZSBkbQNY'
+   alt='alt_text'
+   caption='유튜브 캡션 테스트' %}
