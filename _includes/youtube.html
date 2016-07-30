@@ -1,6 +1,6 @@
-<div youtube-src="{{ include.src }}" class="youtube-video">
-    <figure>
-        <a href="https://www.youtube.com/watch?v={{ include.src }}" title="{{ include.alt }}"><img src="https://img.youtube.com/vi/{{ include.src }}/0.jpg" alt="{{ include.alt }}" /></a>
-        <figcaption>{{ include.caption }}</figcaption>
-    </figure>
-</div>
+<figure class="youtube-container">
+    <div class="youtube-video">
+        <iframe width="640" height="360" src="https://www.youtube.com/embed/{{ include.src }}" frameborder="0" allowfullscreen="true"></iframe>
+    </div>
+    <figcaption>{{ include.caption }}</figcaption>
+</figure>
