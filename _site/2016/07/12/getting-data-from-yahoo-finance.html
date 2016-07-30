@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>야후 파이낸스 API를 이용하여 주가정보 수집하기 - 컴퓨터, 주식을 배우다</title>
+  <meta name="description" content="주식정보 중 가장 기초적인 정보라고 할 수 있는 것이 주가정보이다. 현재 국내에서는 증권사에서 제공하고 있는 Open API를 이용하여 수집할 수 있으나, 증권사에 계좌 개설이 필요하고 각각의 API에 맞는 프로그램을 작성해야 하는 문제가 있어 아주 쉽지는 않다. 야후 파이낸스(h...">
+
+  <link rel="stylesheet" href="/learningstock/css/main.css">
+  <link rel="canonical" href="https://minjejeon.github.io/learningstock/2016/07/12/getting-data-from-yahoo-finance.html">
+  <link rel="alternate" type="application/rss+xml" title="컴퓨터, 주식을 배우다" href="https://minjejeon.github.io/learningstock/feed.xml">
+
+  
+    <!-- google analytics -->
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-80769218-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    <!-- youtube video -->
+
+    <script>
+        window.onload = function(){ 
+            var x = document.getElementsByClassName("youtube-video");
+            var i;
+            for (i = 0; i < x.length; i++) {
+                youtubesrc = x[i].getAttribute("youtube-src");
+                x[i].innerHTML = "<iframe width=\"640\" height=\"360\" src=\"https://www.youtube.com/embed/" + youtubesrc + "\" frameborder=\"0\" allowfullscreen=\"true\"></iframe>";
+            }
+        }
+    </script>
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/learningstock/">컴퓨터, 주식을 배우다</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/learningstock/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">야후 파이낸스 API를 이용하여 주가정보 수집하기</h1>
+    <p class="post-meta"><time datetime="2016-07-12T19:30:00+09:00" itemprop="datePublished">Jul 12, 2016</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>주식정보 중 가장 기초적인 정보라고 할 수 있는 것이 주가정보이다. 현재 국내에서는 증권사에서 제공하고 있는 Open API를 이용하여 수집할 수 있으나, 증권사에 계좌 개설이 필요하고 각각의 API에 맞는 프로그램을 작성해야 하는 문제가 있어 아주 쉽지는 않다. 야후 파이낸스(<a href="http://finance.yahoo.com">http://finance.yahoo.com</a>)에서는 별도 계좌개설이나 프로그램 설치 없이 다운로드 할 수 있는 API를 제공하고 있고, 파이썬에서 활용할 수 있는 API가 공개되어 있어 이용하기 가장 편리한 축에 든다. 데이터가 사전 형태로 제공되기 때문에 pandas DataFrame형태로 변환하기 편리하다.</p>
+
+<p>야후에서 제공하는 데이터에는 한국 상장기업 데이터도 포함되어 있다. 한국 상장회사 데이터를 받을 때는 꼭 주식코드 뒤에 ‘.KS’를 붙여야 다운로드할 수 있는 점만 주의하면 어려운 점은 없다.<br />
+데이터를 받아 보니 회사 이름, 배당 정보, EPS 등을 제공하지 않아 본격적으로 활용하기에는 무리가 있으나, 간편하게 사용하기에는 충분한 정도라고 생각된다.</p>
+
+<h2 id="yahoo-finance-api-">Yahoo Finance API 설치</h2>
+
+<p>pip를 이용해 쉽게 설치할 수 있다.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pip install yahoo-finance
+</code></pre>
+</div>
+
+<h2 id="yahoo-finance-api--1">Yahoo Finance API 사용하기</h2>
+
+<p>pip로 설치한 후 아래와 같이 import 한다</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">yahoo_finance</span> <span class="kn">import</span> <span class="n">Share</span>
+</code></pre>
+</div>
+
+<p>예시로 삼성전자 주가정보를 다운받아 보려고 한다. 주식코드 뒤에 ‘.KS’를 꼭 붙여주여야 한다. get_info 메소드로 기본정보를 얻을 수 있다. 야후에서 제공하는 데이터에 문제가 있어 회사 이름이 출력되지 않는다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">samsung</span> <span class="o">=</span> <span class="n">Share</span><span class="p">(</span><span class="s">'005930.KS'</span><span class="p">)</span> <span class="c"># 객체 초기화</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">samsung</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span> <span class="c">#삼성전자 기본정보</span>
+<span class="p">{</span><span class="s">'CompanyName'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+ <span class="s">'end'</span><span class="p">:</span> <span class="s">'2016-07-10'</span><span class="p">,</span>
+ <span class="s">'start'</span><span class="p">:</span> <span class="s">'2000-01-04'</span><span class="p">,</span>
+ <span class="s">'symbol'</span><span class="p">:</span> <span class="s">'005930.KS'</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<p>시계열 주가정보를 다운받기 위해서는 get_historical 메소드를 사용하여 자료를 다운로드한다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">samsung</span><span class="o">.</span><span class="n">get_historical</span><span class="p">(</span><span class="s">'2016-07-04'</span><span class="p">,</span><span class="s">'2016-07-08'</span><span class="p">)</span>
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>[{'Adj_Close': '1460000.00',
+  'Close': '1460000.00',
+  'Date': '2016-07-08',
+  'High': '1475000.00',
+  'Low': '1449000.00',
+  'Open': '1450000.00',
+  'Symbol': '005930.KS',
+  'Volume': '269900'},
+...
+ {'Adj_Close': '1466000.00',
+  'Close': '1466000.00',
+  'Date': '2016-07-04',
+  'High': '1474000.00',
+  'Low': '1451000.00',
+  'Open': '1464000.00',
+  'Symbol': '005930.KS',
+  'Volume': '159900'}]
+</code></pre>
+</div>
+
+<p>데이터가 사전의 리스트로 제공되기 때문에 pandas DataFrame형태로 변환하기 쉽다. 먼저 pandas, DataFrame, Series를 import한다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">Series</span>
+</code></pre>
+</div>
+
+<p>주가정보를 DataFrame형태로 변환하여 출력한다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">samsung</span><span class="o">.</span><span class="n">get_historical</span><span class="p">(</span><span class="s">'2016-07-04'</span><span class="p">,</span><span class="s">'2016-07-08'</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span>
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>    Adj_Close       Close        Date        High         Low        Open  \
+0  1460000.00  1460000.00  2016-07-08  1475000.00  1449000.00  1450000.00   
+1  1450000.00  1450000.00  2016-07-07  1450000.00  1416000.00  1421000.00   
+2  1421000.00  1421000.00  2016-07-06  1452000.00  1412000.00  1447000.00   
+3  1469000.00  1469000.00  2016-07-05  1475000.00  1462000.00  1466000.00   
+4  1466000.00  1466000.00  2016-07-04  1474000.00  1451000.00  1464000.00   
+
+      Symbol  Volume  
+0  005930.KS  269900  
+1  005930.KS  229900  
+2  005930.KS  334900  
+3  005930.KS  157400  
+4  005930.KS  159900  
+</code></pre>
+</div>
+
+<p>시계열 데이터로 사용하기 쉽게 데이터를 변형한다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s">'Symbol'</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c"># 주식코드 삭제</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">Date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">)</span> <span class="c"># 날짜 문자열을 날짜 데이터 타입으로 변경</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s">'Date'</span><span class="p">)</span> <span class="c"># 인덱스를 Date로 설정</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s">'Open'</span><span class="p">,</span> <span class="s">'High'</span><span class="p">,</span> <span class="s">'Low'</span><span class="p">,</span> <span class="s">'Close'</span><span class="p">,</span> <span class="s">'Adj_Close'</span><span class="p">]]</span> <span class="c"># 열 순서 정렬</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span>
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>                  Open        High         Low       Close   Adj_Close
+Date                                                                  
+2016-07-08  1450000.00  1475000.00  1449000.00  1460000.00  1460000.00
+2016-07-07  1421000.00  1450000.00  1416000.00  1450000.00  1450000.00
+2016-07-06  1447000.00  1452000.00  1412000.00  1421000.00  1421000.00
+2016-07-05  1466000.00  1475000.00  1462000.00  1469000.00  1469000.00
+2016-07-04  1464000.00  1474000.00  1451000.00  1466000.00  1466000.00
+</code></pre>
+</div>
+
+<h2 id="section">더 쉬운 방법</h2>
+<p>pandas-datareader를 설치하면 지금까지 과정을 한방에 할 수 있다.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pip install pandas-datareader
+</code></pre>
+</div>
+
+<p>이제 데이터 데려오기만 하면 된다. pip로 설치할 때는 pandas-datareader, import할 때는 pandas_datareader임에 주의;;</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">pandas_datareader</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s">'005930.KS'</span><span class="p">,</span><span class="s">'yahoo'</span><span class="p">,</span><span class="s">'2016-07-04'</span><span class="p">,</span><span class="s">'2016-07-08'</span><span class="p">)</span>
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>                 Open       High        Low      Close  Volume  Adj Close
+Date                                                                     
+2016-07-04  1464000.0  1474000.0  1451000.0  1466000.0  159900  1466000.0
+2016-07-05  1466000.0  1475000.0  1462000.0  1469000.0  157400  1469000.0
+2016-07-06  1447000.0  1452000.0  1412000.0  1421000.0  334900  1421000.0
+2016-07-07  1421000.0  1450000.0  1416000.0  1450000.0  229900  1450000.0
+2016-07-08  1450000.0  1475000.0  1449000.0  1460000.0  269900  1460000.0
+</code></pre>
+</div>
+
+<p>ohlc(시고저종) 데이터를 수정주가에 맞게 출력도 가능하다</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="o">.</span><span class="n">YahooDailyReader</span><span class="p">(</span><span class="s">'005930.KS'</span><span class="p">,</span> <span class="s">'2010-07-04'</span><span class="p">,</span><span class="s">'2016-07-08'</span><span class="p">,</span> <span class="n">adjust_price</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p>ohlc 데이터가 수정주가에 맞춰서 조정되고, Adj_Close 대신 Adj_Ratio로 조정계수를 바로 받을 수 있다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>                   Open         High          Low       Close  Volume  Adj_Ratio
+Date                                                                            
+2010-07-05   719991.540   726596.967   718104.275   723766.07  199900      0.944
+2010-07-06   719047.908   731315.130   712442.481   731315.13  357500      0.944
+2010-07-07   736033.287   736976.919   721878.800   725653.33  323600      0.944
+2010-07-08   738864.189   739807.822   726596.968   731315.13  295000      0.944
+2010-07-09   735089.659   751131.410   729427.864   751131.41  372100      0.944
+...                 ...          ...          ...         ...     ...        ...
+2016-07-04  1464000.000  1474000.000  1451000.000  1466000.00  159900      1.000
+2016-07-05  1466000.000  1475000.000  1462000.000  1469000.00  157400      1.000
+2016-07-06  1447000.000  1452000.000  1412000.000  1421000.00  334900      1.000
+2016-07-07  1421000.000  1450000.000  1416000.000  1450000.00  229900      1.000
+2016-07-08  1450000.000  1475000.000  1449000.000  1460000.00  269900      1.000
+
+[1556 rows x 6 columns]
+</code></pre>
+</div>
+
+
+  </div>
+
+</article>
+
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+
+      var disqus_config = function () {
+          this.page.url = 'https://minjejeon.github.io/learningstock/2016/07/12/getting-data-from-yahoo-finance.html';  // Replace PAGE_URL with your page's canonical URL variable
+          this.page.identifier = '/2016/07/12/getting-data-from-yahoo-finance'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          
+          s.src = '//learningstock.disqus.com/embed.js';
+          
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">컴퓨터, 주식을 배우다</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li><a href="mailto:"></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/MinjeJeon"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">MinjeJeon</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>금융정보 분석 및 기계학습을 다루는 블로그입니다</p>
+        <p>Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
