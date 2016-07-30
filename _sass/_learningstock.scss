@@ -22,16 +22,19 @@ figure {
     display: table;
 }
 
+figure .youtube-container {
+    max-width: 100%;
+}
+
 figure > img {
     display: block;
 }
 
-figure > div .youtube-video {
-    max-width: 90%;
+.youtube-video { /* TODO: 레이아웃 수정 */
     position: relative;
     padding-bottom: 50.625%;
 
-    iframe, object, embed {
+    iframe, object, embed { 
         position: absolute;
         top: 0;
         left: 0;
