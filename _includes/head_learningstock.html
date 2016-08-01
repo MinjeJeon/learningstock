@@ -10,16 +10,3 @@
     ga('create', 'UA-80769218-1', 'auto');
     ga('send', 'pageview');
     </script>
-
-    <!-- youtube video -->
-
-    <script>
-        window.onload = function(){ 
-            var x = document.getElementsByClassName("youtube-video");
-            var i;
-            for (i = 0; i < x.length; i++) {
-                youtubesrc = x[i].getAttribute("youtube-src");
-                x[i].innerHTML = "<iframe width=\"640\" height=\"360\" src=\"https://www.youtube.com/embed/" + youtubesrc + "\" frameborder=\"0\" allowfullscreen=\"true\"></iframe>";
-            }
-        }
-    </script>
