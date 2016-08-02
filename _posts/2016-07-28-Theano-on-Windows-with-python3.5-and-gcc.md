@@ -2,7 +2,7 @@
 title: 윈도우에서 Theano, Python3.5, GCC 함께 사용하기
 date: 2016-07-28 00:30
 categories:
-- 머신러닝
+- 딥러닝
 tags:
 - theano
 - windows
