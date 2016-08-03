@@ -4,7 +4,7 @@ date: 2016-08-02 19:40
 categories:
 - 딥러닝
 tags:
-- rnn
+- RNN
 layout: post
 published: true
 ---
