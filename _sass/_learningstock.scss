@@ -9,10 +9,17 @@ p, blockquote{
     margin-bottom: 0.5em;
 }
 
-pre, code {
+pre {
     font-family: $monospace-font-family;
+    padding-top: 0.5em;
     padding-bottom: 0.5em;
-    margin-bottom: 0.6em;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em !important ;
+    background-color: #f9f9f9;
+}
+
+code {
+    font-family: $monospace-font-family;
     background-color: #f9f9f9;
 }
 
@@ -83,6 +90,5 @@ table.dataframe  {
 .PageNavigation .next {
   text-align: right;
 }
-
 
 
