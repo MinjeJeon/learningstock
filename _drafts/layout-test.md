@@ -8,7 +8,7 @@ layout: post
 published: true
 ---
 
-이미지 테스트
+## 이미지 테스트
 
 {% include image.html
    src='test3.jpg'
@@ -24,3 +24,6 @@ published: true
    src='kE9ZSBkbQNY'
    alt='alt_text'
    caption='유튜브 캡션 테스트' %}
+
+## 내부 페이지 링크
+

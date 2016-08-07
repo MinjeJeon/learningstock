@@ -4,6 +4,7 @@ import uuid
 import base64
 from PIL import Image
 import datetime 
+import shutil
 
 def main(_, file_path,
          date_string = datetime.date.today().strftime('%Y%m%d'),
@@ -17,11 +18,15 @@ def main(_, file_path,
     with Image.open(file_path) as img:
         w, h = img.size
         img_format = img.format
-        if w > max_width:
-            w_ratio = max_width / w
-            new_h = int(h*w_ratio)
-            img = img.resize((max_width, new_h), Image.ANTIALIAS)
-        img.save(dest_filename, img_format)
+        if img_format == 'GIF':
+            shutil.copy(file_path, dest_filename)
+        else:
+            if w > max_width:
+                w_ratio = max_width / w
+                new_h = int(h*w_ratio)
+                img = img.resize((max_width, new_h), Image.ANTIALIAS)
+            img.save(dest_filename, img_format)
+
 
 if __name__ == '__main__':
     sys.exit(int(main(*sys.argv) or 0))

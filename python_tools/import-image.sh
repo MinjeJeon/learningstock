@@ -1,3 +1,3 @@
 #!/bin/sh
-python3 import-image $1 $2
+python import-image $1 $2
 

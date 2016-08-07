@@ -5,6 +5,7 @@ categories:
 - 딥러닝
 tags:
 - RNN
+- 텍스트
 layout: post
 published: true
 ---

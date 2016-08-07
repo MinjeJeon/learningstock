@@ -1,6 +1,6 @@
 ---
-title: rnn 주해 2편
-date: 2016-08-06 23:00
+title: min-char-rnn 한글 주해(2) - 메인 루프
+date: 2016-08-04 21:00
 categories:
 - 딥러닝
 tags:
@@ -9,6 +9,31 @@ tags:
 layout: post
 published: true
 ---
+
+이전 글
+
+* [min-char-rnn 한글 주해(1) - 데이터 준비, 변수 초기화]({{ site.baseurl }}{% post_url 2016-08-02-min-char-rnn-한글-주해-1 %})
+
+전체 코드 링크 - [한글 주석 추가 전체 코드](https://gist.github.com/MinjeJeon/8f50693f0a986419ab2dda35753acb1f), [Andrej Karpathy가 작성한 원본 코드](https://gist.github.com/karpathy/d4dee566867f8291f086)
+
+변수를 초기화 했으면 손실 값 및 그래디언트를 산출하는 손실 함수 및 텍스트 생성 함수를 만들어 주고, 
+
+{% include image.html
+   src='20160804_dd748085_opt2.gif'
+   alt='그래디언트 탐색 방법 속도 비교'
+   caption='그래디언트 탐색 알고리즘을 비교한 그림. 모든 파라미터를 같은 계수로 학습시키는 SGD(빨강) 보다 다른 Adadelta, Adagrad, Rmsprop 등의 알고리즘이 훨씬 빠르게 작동한다. Image Credit : <a href="https://twitter.com/alecrad">Alec Radford</a>' %}
+
+## 메인 루프 이전 변수 초기화 
+
+```python
+n, p = 0, 0 #  반복 회수(n) 및 입력 데이터(p) 위치 초기화 
+
+# Adagrad 알고리즘에 사용되는 메모리 변수 초기화
+mWxh, mWhh, mWhy = np.zeros_like(Wxh), np.zeros_like(Whh), np.zeros_like(Why)
+mbh, mby = np.zeros_like(bh), np.zeros_like(by) 
+smooth_loss = -np.log(1.0/vocab_size)*seq_length # 손실값 초기화
+```
+
 
 ```python
 while True:
@@ -88,8 +113,5 @@ $$
 
 한번에 이동하는 그래디언트가 클수록 이동하는 속도가 점차 느려진다고 생각하면 되겠다. learning rate mem이 점점 커지기 때문에 이동하는 속도가 점점 느려지는 방향으로만 작동하기 때문에 
 그냥 SGD보다 빠른 방법이라고 생각하면 된다. 각 머신러닝 패키지에서 지원하는
-
-
-
 
 

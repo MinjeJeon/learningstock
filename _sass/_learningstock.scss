@@ -19,12 +19,17 @@ pre, code {
 figure {
     margin-left: auto;
     margin-right: auto;
-    max-width: 90%;
     display: table;
-}
+    max-width: 90%;
+    
+    img {
+        display: block;
+    }
 
-figure > img {
-    display: block;
+    figcaption {
+        display: table-caption;
+        caption-side: bottom;
+    }
 }
 
 div .youtube-container {
