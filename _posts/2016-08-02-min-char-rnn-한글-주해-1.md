@@ -78,3 +78,7 @@ by = np.zeros((vocab_size, 1)) # output bias (25,1)
 ```
 
 일반적인 파라미터 초기화 코드이다. 파라미터(가중치, bias)들은 최적의 값을 찾는 과정에서 손실함수를 최소화하도록 조금씩 바뀐다.
+
+#### 다음 글
+
+* [min-char-rnn 한글 주해(2) - 메인 루프]({{ site.baseurl }}{% post_url 2016-08-07-min-char-rnn-한글-주해-2 %})
