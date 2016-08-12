@@ -93,7 +93,7 @@ min-char-rnn에서는 가중치를 업데이트하기 위한 알고리즘으로 
 {% include image.html
    src='20160804_dd748085_opt2.gif'
    alt='그래디언트 탐색 방법 속도 비교'
-   caption='그래디언트 탐색 알고리즘을 비교한 그림. 모든 파라미터를 같은 계수로 학습시키는 SGD(빨강) 보다 다른 Adadelta, Adagrad, Rmsprop 등의 알고리즘이 훨씬 빠르게 작동한다. Image Credit : <a href="https://twitter.com/alecrad">Alec Radford</a>' %}
+   caption='그래디언트 탐색 알고리즘을 비교한 그림. 모든 파라미터를 같은 계수로 학습시키는 SGD(빨강) 보다 다른 Adadelta, Adagrad, Rmsprop 등의 알고리즘이 훨씬 빠르게 작동한다. Image Credit : <a href="https://twitter.com/alecrad" target="_blank">Alec Radford</a>' %}
 
 그래디언트에 일괄적인 학습 속도를 적용하지 않고 각 원소별로 변화폭을 결정해 준다. 그래디언트의 원소 중 큰 항목에 대해서는 이동폭을 작게 조정해주고, 작은 원소에게는 이동폭을 증폭시켜준다. 
 
