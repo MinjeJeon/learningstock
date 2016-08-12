@@ -17,7 +17,7 @@ published: true
 {% include image.html
    src='20160802_7a29187b_charseq.jpeg'
    alt='min-char-rnn 원리'
-   caption='min-char-rnn의 원리. 아래쪽에서 문자가 입력될 때 입력값은 W_xh로 변환되어 hidden layer에 들어가고, hidden layer에서는 들어온 값을 W_hy로 변환하여 다음 글자를 추론하여 출력한다. 각 단계마다 hidden layer는 자체적으로 W_hh로 변환되어 다음 글자를 받을 준비를 한다. 여기서는 [h, e, l, l]을 입력받아 각 입력에 대한 다음 글자인 [e, l, l, o]를 추론한다.' %}
+   caption='min-char-rnn의 원리. 아래쪽에서 문자가 입력될 때 입력값은 W_xh로 변환되어 hidden layer에 들어가고, hidden layer에서는 들어온 값을 W_hy로 변환하여 다음 글자를 추론하여 출력한다. 각 단계마다 hidden layer는 자체적으로 W_hh로 변환되어 다음 글자를 받을 준비를 한다. 여기서는 [h, e, l, l]을 입력받아 각 입력에 대한 다음 글자인 [e, l, l, o]를 추론한다. 이미지 출처: <a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/" target="_blank">http://karpathy.github.io/2015/05/21/rnn-effectiveness/</a>' %}
 
 한글 소설을 넣으면 소설이 나오는 걸 만들어보고 싶은데, 한글은 글자 단위로 하면 네트워크가 많이 커지는 문제가 있어 음소 단위로 해보려고 한다. 아래와 같은 순서로 배우면 되겠다. 많네;;
 
