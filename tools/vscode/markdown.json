@@ -46,6 +46,12 @@
 			"   alt='${alt_text}'",
 			"   caption='${caption_text}' %}"
 		]
-	}
+	},
 
+		"Insert Python Code Block" :{
+		"prefix": "python_inline",
+		"body": [
+			"`${code}`{: .language-python}"
+		]
+	}
 }
