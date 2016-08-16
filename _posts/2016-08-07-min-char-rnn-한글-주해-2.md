@@ -117,3 +117,7 @@ $$
 
 <!-- * cs231n 강좌 Cross-entropy 부분 - <http://cs231n.github.io/linear-classify/#softmax-classifier> -->
 * latex 수식 편집기 - <http://mathurl.com/>
+
+#### 다음 글
+
+* [min-char-rnn 한글 주해(3) - 손실값 계산, 그래디언트 계산, 문자 출력함수]({{ site.baseurl }}{% post_url 2016-08-16-min-char-rnn-한글-주해-3 %})
