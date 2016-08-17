@@ -27,31 +27,38 @@ def lossFun(inputs, targets, hprev):
   xs, hs, ys, ps = {}, {}, {}, {}
   hs[-1] = np.copy(hprev)
   loss = 0
-  # forward pass
+  # forward pass(손실값 계산)
   for t in range(len(inputs)):
     ...
 ```
 
-inputs, targets는 모두 문자를 인덱싱한 숫자의 리스트이고, hprev값은 이전 학습에서의 마지막 hidden state를 가져온다. forward pass에서 h값, y값, p값을 차례대로 구하는 것은 다른 뉴럴 네트워크와 동일하지만, 여기서는 들어오는 글자 수만큼 학습이 반복되기 때문에 캐싱을 위한 변수를 사전으로 초기화하고 각각의 사전에 0부터 글자의 길이만큼 값을 넣어준다. 처음(0번째)에 t-1번째의 h값으로 사용하기 위해 hs[-1]에 hprev값을 넣어준다. 파이썬은 참조에 의한 전달을 사용하므로 값이 변경될 위험이 있을 때 copy함수를 사용하는데, 여기서는 값의 변동이 없어 `hs[-1] = hprev`{: .language-python}를 넣어줘도 무방하다. 그렇지만 copy함수를 넣어야 할 때 안 넣으면 결과가 치명적이므로 copy를 사용하여 값을 할당해 준다.
+inputs, targets는 모두 문자를 인덱싱한 숫자의 리스트이고, hprev값은 이전 학습에서의 마지막 hidden state를 가져온다. forward pass에서 h값, y값, p값을 차례대로 구하는 것은 다른 뉴럴 네트워크와 동일하지만, 여기서는 들어오는 글자 수만큼 학습이 반복되기 때문에 캐싱을 위한 변수를 사전으로 초기화하고 각각의 사전에 0부터 글자의 길이만큼 값을 넣어준다. 처음(0번째)에 t-1번째의 h값으로 사용하기 위해 hs[-1]에 hprev값을 넣어준다. 파이썬은 참조에 의한 전달을 사용하므로 값이 변경될 위험이 있을 때 copy함수를 사용하는데, 여기서는 값의 변동이 없어 `hs[-1] = hprev`{: .language-python}를 넣어줘도 무방하다. 그렇지만 copy함수를 넣어야 할 때 안 넣으면 결과가 치명적이므로 copy를 사용하여 값을 할당해 주는 것이 안전하다.
 
 ```python
-  # forward pass
+  # forward pass(손실값 계산)
   for t in range(len(inputs)):
-    xs[t] = np.zeros((vocab_size,1)) # encode in 1-of-k representation
-    xs[t][inputs[t]] = 1
-    hs[t] = np.tanh(np.dot(Wxh, xs[t]) + np.dot(Whh, hs[t-1]) + bh) # hidden state
-    ys[t] = np.dot(Why, hs[t]) + by # unnormalized log probabilities for next chars
-    ps[t] = np.exp(ys[t]) / np.sum(np.exp(ys[t])) # probabilities for next chars
-    loss += -np.log(ps[t][targets[t],0]) # softmax (cross-entropy loss)
+    xs[t] = np.zeros((vocab_size,1)) # 1-of-k(one-hot) 형태로 변환. 모든 값이 0인 array 준비
+    xs[t][inputs[t]] = 1 # 해당하는 글자에만 값을 1로 설정 - [0, ..., 0, 1, 0, ..., 0]
+    hs[t] = np.tanh(np.dot(Wxh, xs[t]) + np.dot(Whh, hs[t-1]) + bh) # hidden state 업데이트
+    ys[t] = np.dot(Why, hs[t]) + by # 다음 글자가 어떤 글자가 나올지에 가능성을 표시한 array(정규화되지 않음)
+    ps[t] = np.exp(ys[t]) / np.sum(np.exp(ys[t])) # softmax로 각 글자의 등장 가능성을 확률로 표시
+    loss += -np.log(ps[t][targets[t],0]) # cross-entropy를 이용하여 정답과 비교하여 손실값 판정
 ```
 
 글자 수만큼 루프를 타면서 loss를 계산하는 과정이다.
 
-* xs[t] - t번째의 입력 문자. 1-of-k 또는 one-hot encoding을 통해 한 개의 값만 1인 array(ex. [0, 0, ..., 1, 0, 0])를 만들어서 넣어준다.
-* hs[t] - t번째의 hidden state. x[0] 부터 Wxh, Whh에 의해 변화한 수치이다.
-* ys[t] - 입력으로 들어오는 문자열 시퀀스의 횟수만큼 가중치 적용과 출력을 반복한다.
+* xs[t] - t번째의 입력 문자. 1-of-k 또는 one-hot encoding을 통해 한 개의 값만 1인 array(ex. [0, ..., 0, 1, 0, ..., 0])를 만들어서 넣어준다.
+* hs[t] - t번째의 hidden state. 직전의 hidden state(hs[t-1]), 입력값(xs[t]), bias를 더하고, tanh 함수에 더한 값을 넣어 다음 단계로 보낸다.
+* ys[t] - 계산의 결과로 다음 글자가 어떤 글자가 나타날 확률이 높은지 나타내는 array이다. 이 값이 높을수록 나타날 확률이 높아지지만, 로그 확률이기 때문에 음수도 있어 직관적으로 이해하기는 어려운 숫자이다.
+* ps[t] - softmax 함수를 이용하여 각 문자가 나타날 확률을 합이 1인 확률분포로 만들어준다.
+* loss - forward pass의 결과로 계산된 손실값이며, 최종적으로는 각 시점에서 계산된 손실값의 총합을 나타낸다. $$ \left ( loss = loss_{1} + loss_{2} + loss_{3} + \ldots + loss_{25} \right )$$
 
-여기서는 각 t 시점의
+{% include image.html
+   src='20160817_21bc366d_rnn-forward-1.png'
+   alt='RNN에서 각 시점에서 문자가 나타날 확률을 계산하는 과정'
+   caption='RNN에서 각 시점에서 문자가 나타날 확률을 계산하는 과정' %}
+
+루프를 반복하면서 각각의 글자가 나타날 확률을 만들어내는데, 마지막 글자에 이르면 상당히 깊은 네트워크가 만들어지게 된다. 
 
 ## 그래디언트 계산(backward pass)
 
@@ -61,8 +68,14 @@ inputs, targets는 모두 문자를 인덱싱한 숫자의 리스트이고, hpre
   dhnext = np.zeros_like(hs[0])
 ```
 
-
 첫번째 문자의 경우는 이렇고, 다음 문자의 경우는 이러하다.
+
+{% include image.html
+   src='20160818_7f5d6a69_rnn-backward-1.png'
+   alt='t=1 시점에서의 그래디언트 역전파'
+   caption='그래디언트 역전파 ㅜㅜ' %}
+
+다변수 함수에 대한 연쇄법칙([위키백과](https://ko.wikipedia.org/wiki/%EC%97%B0%EC%87%84_%EB%B2%95%EC%B9%99#.EB.8B.A4.EB.B3.80.EC.88.98_.ED.95.A8.EC.88.98.EC.97.90_.EB.8C.80.ED.95.9C_.EC.97.B0.EC.87.84.EB.B2.95.EC.B9.99), [네이버 블로그](http://blog.naver.com/PostView.nhn?blogId=mindo1103&logNo=90103548178))에 의해 
 
 ## 텍스트 생성(sample)
 
