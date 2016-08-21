@@ -62,20 +62,47 @@ inputs, targets는 모두 문자를 인덱싱한 숫자의 리스트이고, hpre
 
 ## 그래디언트 계산(backward pass)
 
+앞에서 손실값을 계산할 때 입력 글자 수 만큼 반복하였기 때문에 전체 손실을 수식이나 그래프로 표현하게 되면 엄청나게 길어지게 된다. 다행히 다변수 함수에 대한 연쇄법칙(참고 - [위키백과](https://ko.wikipedia.org/wiki/%EC%97%B0%EC%87%84_%EB%B2%95%EC%B9%99#.EB.8B.A4.EB.B3.80.EC.88.98_.ED.95.A8.EC.88.98.EC.97.90_.EB.8C.80.ED.95.9C_.EC.97.B0.EC.87.84.EB.B2.95.EC.B9.99), [네이버 블로그](http://blog.naver.com/PostView.nhn?blogId=mindo1103&logNo=90103548178))에 의해 RNN의 각 반복마다 루프를 거꾸로 돌면서 그래디언트를 계산해 단순히 값을 더해주기만 하면 된다. 
+
+{% include image.html
+   src='20160818_7f5d6a69_rnn-backward-1.png'
+   alt='t=1 시점에서의 그래디언트 역전파'
+   caption='t=1 시점에서의 그래디언트 역전파 다이어그램. 전체를 표현하려면 훨씬 커진다.' %}
+
 ```python
   dWxh, dWhh, dWhy = np.zeros_like(Wxh), np.zeros_like(Whh), np.zeros_like(Why)
   dbh, dby = np.zeros_like(bh), np.zeros_like(by)
   dhnext = np.zeros_like(hs[0])
 ```
 
-첫번째 문자의 경우는 이렇고, 다음 문자의 경우는 이러하다.
+그래디언트 계산을 위한 변수를 초기화한다. 각각의 그래디언트는 각 가중치 변수와 같은 형태를 가진 array이므로, np.zeros_like함수를 이용하여 0으로 초기화한다.
 
-{% include image.html
-   src='20160818_7f5d6a69_rnn-backward-1.png'
-   alt='t=1 시점에서의 그래디언트 역전파'
-   caption='그래디언트 역전파 ㅜㅜ' %}
+```python
+  for t in reversed(range(len(inputs))): #위의 과정을 반대로 진행(t=24부터 시작)
+    dy = np.copy(ps[t])
+    dy[targets[t]] -= 1 # y의 그래디언트 계산, softmax 함수의 그래디언트 계산
+    dWhy += np.dot(dy, hs[t].T)
+    dby += dy
+    dh = np.dot(Why.T, dy) + dhnext # backprop into h
+    dhraw = (1 - hs[t] * hs[t]) * dh # backprop through tanh nonlinearity
+    dbh += dhraw
+    ...
+```
 
-다변수 함수에 대한 연쇄법칙([위키백과](https://ko.wikipedia.org/wiki/%EC%97%B0%EC%87%84_%EB%B2%95%EC%B9%99#.EB.8B.A4.EB.B3.80.EC.88.98_.ED.95.A8.EC.88.98.EC.97.90_.EB.8C.80.ED.95.9C_.EC.97.B0.EC.87.84.EB.B2.95.EC.B9.99), [네이버 블로그](http://blog.naver.com/PostView.nhn?blogId=mindo1103&logNo=90103548178))에 의해 
+
+
+```python
+    ...
+    dWxh += np.dot(dhraw, xs[t].T)
+    dWhh += np.dot(dhraw, hs[t-1].T)
+    dhnext = np.dot(Whh.T, dhraw)
+```
+
+```python
+  for dparam in [dWxh, dWhh, dWhy, dbh, dby]:
+    np.clip(dparam, -5, 5, out=dparam) # 그래디언트 발산 방지
+  return loss, dWxh, dWhh, dWhy, dbh, dby, hs[len(inputs)-1]
+```
 
 ## 텍스트 생성(sample)
 
