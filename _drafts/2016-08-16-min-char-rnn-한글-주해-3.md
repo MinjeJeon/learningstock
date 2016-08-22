@@ -89,7 +89,7 @@ inputs, targets는 모두 문자를 인덱싱한 숫자의 리스트이고, hpre
     ...
 ```
 
-
+forward pass에서 위 그림에서 $$ y_{1} \rightarrow p_{1} $$ 으로 역전파되는 과정이다. 
 
 ```python
     ...
