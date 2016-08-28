@@ -32,6 +32,8 @@ smooth_loss = -np.log(1.0/vocab_size)*seq_length # 학습이 이루어지기 전
 
 학습 과정을 진행하기 이전에 adagrad 최적화 알고리즘을 위한 메모리 변수를 준비한다. 각 가중치와 동일한 shape를 가진 행렬을 0으로 초기화한다. smooth\_loss는 최적화가 전혀 진행되지 않은 상태를 초기값으로 한다.
 
+## 메인 루프
+
 ```python
 while True:
   # 입력데이터 준비, 텍스트의 맨 앞쪽부터 seq_length만큼씩 데이터를 준비
@@ -117,3 +119,7 @@ $$
 
 <!-- * cs231n 강좌 Cross-entropy 부분 - <http://cs231n.github.io/linear-classify/#softmax-classifier> -->
 * latex 수식 편집기 - <http://mathurl.com/>
+
+#### 다음 글
+
+* [min-char-rnn 한글 주해(3) - 손실값 계산, 그래디언트 계산, 문자 출력함수]({{ site.baseurl }}{% post_url 2016-08-28-min-char-rnn-한글-주해-3 %})

@@ -82,3 +82,4 @@ by = np.zeros((vocab_size, 1)) # output bias (25,1)
 #### 다음 글
 
 * [min-char-rnn 한글 주해(2) - 메인 루프]({{ site.baseurl }}{% post_url 2016-08-07-min-char-rnn-한글-주해-2 %})
+* [min-char-rnn 한글 주해(3) - 손실값 계산, 그래디언트 계산, 문자 출력함수]({{ site.baseurl }}{% post_url 2016-08-28-min-char-rnn-한글-주해-3 %})

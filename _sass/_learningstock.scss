@@ -1,4 +1,7 @@
 
+.post-title {
+    line-height: 1.2em;
+}
 
 h2, h3, h4, h5, h6,
 {
@@ -91,4 +94,8 @@ table.dataframe  {
   text-align: right;
 }
 
+.mjx-chtml.MJXc-display{
+    overflow-x: auto;
+    overflow-y: hidden;
+}
 
