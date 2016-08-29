@@ -81,7 +81,7 @@ table.dataframe > td {
   text-align: right;
 }
 
-.mjx-chtml.MJXc-display{
+.MathJax_Display{
     overflow-x: auto;
     overflow-y: hidden;
 }
