@@ -85,7 +85,7 @@ def lossFun(inputs, targets, hprev):
     dy[targets[t]] -= 1 # y의 그래디언트 계산 - softmax 함수의 그래디언트 계산
     dby += dy
     dWhy += np.dot(dy, hs[t].T)
-    dh = np.dot(Why.T, dy) + dhnext # loss에서 사용된 h와 h를 업데이트한 계산의 그래디언트 값을 더함.
+    dh = np.dot(Why.T, dy) + dhnext # loss에서 사용된 h와 h를 업데이트한 계산의 그래디언트 값을 더함
     dhraw = (1 - hs[t] * hs[t]) * dh # tanh 역전파
     dbh += dhraw
     dWxh += np.dot(dhraw, xs[t].T)
