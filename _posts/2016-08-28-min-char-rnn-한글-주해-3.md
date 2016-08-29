@@ -55,7 +55,7 @@ def lossFun(inputs, targets, hprev):
 * `ps[t]` - softmax 함수를 이용하여 각 문자가 나타날 확률을 합이 1인 확률분포로 만들어준다.
 * `loss` - forward pass의 결과로 계산된 손실값이며, 최종적으로는 각 시점에서 계산된 손실값의 총합을 나타낸다. $$ \left ( loss = loss_{1} + loss_{2} + loss_{3} + \ldots + loss_{25} \right )$$
 
-{% include image.html
+{% include ls/image.html
    src='20160817_21bc366d_rnn-forward-1.png'
    alt='RNN에서 각 시점에서 문자가 나타날 확률을 계산하는 과정'
    caption='RNN에서 각 시점에서 문자가 나타날 확률을 계산하는 과정' %}
@@ -66,7 +66,7 @@ def lossFun(inputs, targets, hprev):
 
 앞에서 손실값을 계산할 때 입력 글자 수 만큼 반복하였기 때문에 전체 손실을 수식이나 그래프로 표현하게 되면 엄청나게 길어지게 된다. 다행히 다변수 함수에 대한 연쇄법칙(참고 - [위키백과](https://ko.wikipedia.org/wiki/%EC%97%B0%EC%87%84_%EB%B2%95%EC%B9%99#.EB.8B.A4.EB.B3.80.EC.88.98_.ED.95.A8.EC.88.98.EC.97.90_.EB.8C.80.ED.95.9C_.EC.97.B0.EC.87.84.EB.B2.95.EC.B9.99), [네이버 블로그](http://blog.naver.com/PostView.nhn?blogId=mindo1103&logNo=90103548178))에 의해 RNN의 각 반복마다 루프를 거꾸로 돌면서 그래디언트를 계산해 단순히 값을 더해주기만 하면 된다. 
 
-{% include image.html
+{% include ls/image.html
    src='20160818_7f5d6a69_rnn-backward-1.png'
    alt='t=1 시점에서의 그래디언트 역전파'
    caption='t=1 시점에서의 그래디언트 역전파 다이어그램. 전체를 표현하려면 훨씬 커진다.' %}

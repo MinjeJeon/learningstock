@@ -11,7 +11,7 @@ layout: post
 
 유튜브에 나온 머신러닝 강좌
 
-{% include youtube.html
+{% include ls/youtube.html
     src='qPMeuL2LIqY'
    alt='머신러닝 용어, 개념 설명'
    caption='' %}

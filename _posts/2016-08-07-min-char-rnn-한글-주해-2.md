@@ -92,7 +92,7 @@ $$
 
 min-char-rnn에서는 가중치를 업데이트하기 위한 알고리즘으로 adagrad 알고리즘을 사용하고 있다. 모든 가중치에 대해 일괄적으로 learning_rate에 의해서 업데이트 시키는 방법보다 속도가 매우 빠르다는 장점을 가지고 있다.
 
-{% include image.html
+{% include ls/image.html
    src='20160804_dd748085_opt2.gif'
    alt='그래디언트 탐색 방법 속도 비교'
    caption='그래디언트 탐색 알고리즘을 비교한 그림. 모든 파라미터를 같은 계수로 학습시키는 SGD(빨강) 보다 다른 Adadelta, Adagrad, Rmsprop 등의 알고리즘이 훨씬 빠르게 작동한다. Image Credit : <a href="https://twitter.com/alecrad" target="_blank">Alec Radford</a>' %}

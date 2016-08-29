@@ -10,17 +10,17 @@ published: true
 
 ## 이미지 테스트
 
-{% include image.html
+{% include ls/image.html
    src='test3.jpg'
    alt='alt 텍스트'
    caption='캡션 테스트' %}
 
-{% include image.html
+{% include ls/image.html
    src='test1.jpg'
    alt='alt_text'
    caption='caption_text' %}
 
-{% include youtube.html
+{% include ls/youtube.html
    src='kE9ZSBkbQNY'
    alt='alt_text'
    caption='유튜브 캡션 테스트' %}

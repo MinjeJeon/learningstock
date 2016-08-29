@@ -32,7 +32,7 @@
 	"Insert image with caption" :{
 		"prefix": "imgcaption",
 		"body": [
-			"{% include image.html",
+			"{% include ls/image.html",
    			"	src='${src}'",
 			"   alt='${alt_text}'",
 			"   caption='${caption_text}' %}"
@@ -41,7 +41,7 @@
 		"Insert Youtube video" :{
 		"prefix": "youtube",
 		"body": [
-			"{% include youtube.html",
+			"{% include ls/youtube.html",
    			"	src='${youtube_video_ID}'",
 			"   alt='${alt_text}'",
 			"   caption='${caption_text}' %}"

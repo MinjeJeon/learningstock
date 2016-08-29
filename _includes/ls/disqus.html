@@ -1,16 +1,3 @@
-<div class="PageNavigation">
-    <div class ="prev">
-        {% if page.previous.url %}
-            <a class="prev" href="{{page.previous.url | prepend: site.baseurl }}">&laquo; {{page.previous.title}}</a>
-        {% endif %}
-    </div>
-    <div class ="next">
-        {% if page.next.url %}
-            <a class="next" href="{{page.next.url | prepend: site.baseurl }}">{{page.next.title}} &raquo;</a>
-        {% endif %}
-    </div>
-</div>
-
 {% unless page.disable_comments %}
   <div id="disqus_thread"></div>
   <script>
