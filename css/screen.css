@@ -1515,9 +1515,10 @@ body.touch.user article .readmore {
     }
 }
 @media only screen and (max-width: 480px) {
-    article {
+    
+    body > #container {
         margin-top: 40px;
-        padding: 0 20px
+        padding: 0 5%
     }
     article header {
         margin-bottom: 30px
