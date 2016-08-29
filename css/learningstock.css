@@ -1,46 +1,30 @@
-
 .post-title {
     line-height: 1.2em;
 }
 
-h2, h3, h4, h5, h6,
-{
+.site-nav {
+    padding : 20px
+}
+
+h2, h3, h4, h5, h6 {
     margin-top: 1em;
     margin-bottom: 0.5em;
 }
+
 p, blockquote{
     margin-bottom: 0.5em;
 }
 
-pre {
-    font-family: $monospace-font-family;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    margin-top: 0.8em;
-    margin-bottom: 0.8em !important ;
-    background-color: #f9f9f9;
-}
-
-code {
-    font-family: $monospace-font-family;
-    background-color: #f9f9f9;
-}
-
-figure {
+.text figure {
     margin-left: auto;
     margin-right: auto;
     display: table;
     max-width: 90%;
-    
-    img {
-        display: block;
-    }
-
-    figcaption {
-        display: table-caption;
-        caption-side: bottom;
-    }
+    margin-bottom: 20px
 }
+
+.text figure > img { display: block; margin-bottom: 2px;}
+.text figure > figcaption { display: table-caption; caption-side: bottom; }
 
 div .youtube-container {
     max-width: 90%;
@@ -52,28 +36,31 @@ div .youtube-container {
 .youtube-video {
     position: relative;
     padding-bottom: 50.625%;
-    iframe, object, embed { 
+}
+
+.youtube-video > iframe { 
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-    }
 }
 
 table.dataframe  {
     border: 1px solid black;
     border-collapse: collapse;
-    font-size: $small-font-size;
+    font-size: 14px;
+}
 
-    th {
-        text-align: center;
-    }
+table.dataframe > th { 
+    text-align: center;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+ }
 
-    td, th {
+table.dataframe > td {
         padding-left: 0.3em;
         padding-right: 0.3em;
-    }
 }
 
 .PageNavigation {
@@ -98,4 +85,3 @@ table.dataframe  {
     overflow-x: auto;
     overflow-y: hidden;
 }
-
