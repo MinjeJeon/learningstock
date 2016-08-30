@@ -6,6 +6,7 @@ categories:
 tags:
 - theano
 - windows
+- troubleshooting
 layout: post
 published: true
 ---

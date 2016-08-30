@@ -2,5 +2,7 @@
     <div class="youtube-video">
         <iframe width="640" height="360" src="https://www.youtube.com/embed/{{ include.src }}" frameborder="0" allowfullscreen="true"></iframe>
     </div>
+    {% if include.caption %}
     <span>{{ include.caption }}</span>
+    {% endif %}
 </div>

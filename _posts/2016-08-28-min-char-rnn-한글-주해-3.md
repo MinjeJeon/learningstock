@@ -8,6 +8,7 @@ tags:
 - 텍스트
 layout: post
 published: true
+image: 20160818_7f5d6a69_rnn-backward-1.png
 ---
 
 #### 이전 글

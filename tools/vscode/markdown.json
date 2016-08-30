@@ -33,7 +33,7 @@
 		"prefix": "imgcaption",
 		"body": [
 			"{% include ls/image.html",
-   			"	src='${src}'",
+   			"   src='${src}'",
 			"   alt='${alt_text}'",
 			"   caption='${caption_text}' %}"
 		]
@@ -42,7 +42,7 @@
 		"prefix": "youtube",
 		"body": [
 			"{% include ls/youtube.html",
-   			"	src='${youtube_video_ID}'",
+   			"   src='${youtube_video_ID}'",
 			"   alt='${alt_text}'",
 			"   caption='${caption_text}' %}"
 		]
