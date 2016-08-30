@@ -3,6 +3,7 @@ title: imwheel로 리눅스 휠 스크롤 속도 변경하기
 date: 2016-07-08 20:47
 tags:
 - imwheel
+- troubleshooting
 categories:
 - linux
 layout: post

@@ -8,7 +8,7 @@ import shutil
 
 def main(_, file_path,
          date_string = datetime.date.today().strftime('%Y%m%d'),
-         max_width = 800):
+         max_width = 1280):
     print(sys.argv)
     print(file_path)
     dir_name, file_name = os.path.split(os.path.abspath(file_path))
