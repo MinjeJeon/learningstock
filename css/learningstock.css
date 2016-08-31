@@ -1,11 +1,3 @@
-.post-title {
-    line-height: 1.2em;
-}
-
-.site-nav {
-    padding : 20px
-}
-
 h2, h3, h4, h5, h6 {
     margin-top: 1em;
     margin-bottom: 0.5em;
@@ -84,9 +76,4 @@ table.dataframe > td {
 .MathJax_Display{
     overflow-x: auto;
     overflow-y: hidden;
-}
-
-a.page-link {
-    padding-left: 10px;
-    padding-right: 10px;
 }
