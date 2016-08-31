@@ -450,11 +450,7 @@ article>header .meta {
     zoom: 1;
     *display: inline
 }
-article>header .count {
-    font-size: 14px;
-    margin-left: 10px;
-    color: #a4adb6
-}
+
 article .text {
     font-size: 18px;
     line-height: 1.7em;
@@ -1649,4 +1645,102 @@ body.touch.user article .readmore {
     body.noimage article {
         margin-top: 24px
     }
+}
+
+/* 수정한 부분 */
+
+.post-title {
+    line-height: 1.2em;
+}
+
+.site-nav {
+    padding : 20px
+}
+
+a.page-link {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+body.category-template.user > header, body.tag-template.user > header {
+    margin-bottom: 40px;
+}
+
+body.category-template.user article, body.tag-template.user article {
+    margin-bottom: 0px;
+}
+
+body.user .collection{
+    text-align: left;
+    margin-bottom: 40px;
+    padding-bottom: 80px;
+    padding-top: 40px;
+    border-bottom: 2px solid #f7f7f7;
+    font-size: 18px;
+}
+
+body.user .collection:last-of-type {
+    border-bottom: none;
+    border-bottom-width: initial;
+    border-bottom-style: none;
+    border-bottom-color: initial;
+    margin-bottom: 40px;
+}
+
+body.user .collection h1 {
+    font-size: 32px;
+    margin: 16px auto;
+    max-width: 680px;
+    font-weight: bold;
+}
+
+body.user .collection h1 .nposts {
+    color: #a4adb6;
+    vertical-align: baseline;
+    font-size: 14px;
+    padding-left: 14px;
+    font-weight: normal;
+}
+body.user .collection ul {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+body.user .collection ul li {
+    padding: 0 6px 12px 6px
+}
+
+body.user .collection ul li time {
+    color: #a4adb6;
+    font-size: 14px;
+}
+
+body.user .collection ul li a {
+    color: #000000;
+    line-height: 1.7em;
+}
+
+body.user .collection ul li a:hover {
+    color: #d35c5c;
+    transition-duration: 0.2s;
+    transition-property: background-color, color;
+}
+
+.meta {
+    font-size: 14px;
+    color: #a4adb6
+}
+
+.meta span {
+    padding-left: 3px;
+}
+
+.meta span a {
+    color: #a4adb6;
+}
+
+.meta span a:hover {
+    color: #d35c5c;
+    transition-duration: 0.2s;
+    transition-property: background-color, color;
 }

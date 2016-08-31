@@ -16,14 +16,14 @@
 
             <div class="details">
                 <h4><a href="{{ site.url }}" class="url n">{{ site.title }}</a></h4>
-                <a href="{{ site.baseurl | prepend: site.url }}" >{{ site.url | replace:'https://', '' | replace:'http://', ''}}</a><br>
+                <a href="{{ site.baseurl | prepend: site.url }}/" >{{ site.url | replace:'https://', '' | replace:'http://', ''}}</a><br>
                 <span>Published with <a href="https://jekyllrb.com">Jekyll</a></span><br>
             </div>
         </div>
         <div id="user_bio">
             <div class="inner">
                 <p>{{ site.description }}</p>
-                <p>{{ site.license}}</p>
+                <p>{{ site.license }}</p>
             </div>
         </div>
     </div>

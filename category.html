@@ -1,0 +1,29 @@
+---
+layout: post_list
+body_class: "category-template user"
+---
+
+<article>
+    <header>
+        <h1 id="title">Category</h1>
+    </header>
+</article>
+
+{% for category in site.categories %}
+{% assign nposts = category | last | size %}
+<div id="{{ category | first | escape }}" class="collection" data-name="{{ category | first | escape }}">
+    <h1><a href="#{{ category | first }}">{{ category | first }}</a><span class="nposts">{{ nposts }} post{% if nposts != 1 %}s{% endif %}</span></h1>
+    <ul>
+    {% for posts in category %}
+        {% for post in posts %}
+        {% if post.title %}
+            <li>
+                <p><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+                <p><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></p>
+            </li>
+        {% endif %}
+        {% endfor %}
+    {% endfor %}
+    </ul>
+</div>
+{% endfor %}

@@ -4,6 +4,7 @@ date: 2016-07-08 20:47
 tags:
 - imwheel
 - troubleshooting
+- ubuntu
 categories:
 - linux
 layout: post
