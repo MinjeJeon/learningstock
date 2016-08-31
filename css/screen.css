@@ -1403,6 +1403,10 @@ body.touch.user article .readmore {
         margin-left: -7.5%;
         width: 115%
     }
+    article>header .meta {
+        display: block;
+        margin-top: 15px
+    }
 }
 @media only screen and (max-height: 600px) {
     body.user article.featured .image-holder {
@@ -1638,10 +1642,6 @@ body.touch.user article .readmore {
     }
 }
 @media only screen and (max-width: 360px) {
-    article>header .meta {
-        display: block;
-        margin-top: 15px
-    }
     body.noimage article {
         margin-top: 24px
     }
