@@ -85,3 +85,8 @@ table.dataframe > td {
     overflow-x: auto;
     overflow-y: hidden;
 }
+
+a.page-link {
+    padding-left: 10px;
+    padding-right: 10px;
+}

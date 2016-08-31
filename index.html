@@ -1,46 +1,36 @@
 ---
-layout: default
+layout: post_list
 body_class: "home-template user"
 ---
 
-{% include header.html %}
+{% for post in paginator.posts %}
 
-<div class="page-content">
-  <div class="wrapper">
-    <div class="home">
-      <div id="container">
-        {% for post in paginator.posts %}
-        <article class="{%comment%}post_class{%endcomment%}">
+<article class="{%comment%}post_class{%endcomment%}">
 
-            {% if post.image %}
-                <div class="image-holder show">
-                  <a href="{{ post.url | prepend: site.baseurl }}" class="inner" style="background-image: url('{{ site.baseurl }}/images/{{ post.image }}');">
-                    <img src="{{ site.baseurl }}/images/{{ post.image }}">
-                </a>
-              </div>
-            {% endif %}
+    {% if post.image %}
+        <div class="image-holder show">
+            <a href="{{ post.url | prepend: site.baseurl }}" class="inner" style="background-image: url('{{ site.baseurl }}/images/{{ post.image }}');">
+            <img src="{{ site.baseurl }}/images/{{ post.image }}">
+        </a>
+        </div>
+    {% endif %}
 
-            <div class="meta">
-              <time datetime="{{ post.date | date: '%Y-%m-%d' }}">
-                <a href="{{ post.url | prepend: site.baseurl }}">{{ post.date | date: "%B %-d, %Y" }}</a>
-              </time>
-            </div>
-
-            <header>
-                <h1><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h1>
-            </header>
-
-            <div class="text">
-                <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
-                <a href="{{ post.url | prepend: site.baseurl }}" class="readmore">Continue Reading</a>
-            </div>
-        </article>
-        {% endfor %}
-      </div>
+    <div class="meta">
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">
+        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.date | date: "%B %-d, %Y" }}</a>
+        </time>
     </div>
-  </div>
-</div>
+
+    <header>
+        <h1><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h1>
+    </header>
+
+    <div class="text">
+        <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
+        <a href="{{ post.url | prepend: site.baseurl }}" class="readmore">Continue Reading</a>
+    </div>
+</article>
+{% endfor %}
 
 {% include pagination.html %}
 
-{% include footer.html %}
