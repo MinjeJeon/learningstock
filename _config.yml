@@ -15,6 +15,6 @@ markdown: kramdown
 permalink: /:year/:month/:day/:title.html
 license: Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license.
 excerpt_separator: <!--more-->
-paginate: 10
+paginate: 15
 
 gems: [jekyll-paginate]
