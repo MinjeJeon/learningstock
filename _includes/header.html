@@ -10,9 +10,11 @@
       <a class="page-link" href="{{ site.baseurl }}/category.html">Categories</a>
       <a class="page-link" href="{{ site.baseurl }}/tag.html">Tags</a>
       {% for page in site.pages %}
-      {% if page.title %}
-        <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-      {% endif %}
+        {% if page.title %}
+          {% unless page.title == 'Categories' or page.title == 'Tags'%}
+            <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+          {% endunless %}
+        {% endif %}
       {% endfor %}
     </div>
     </nav>
