@@ -77,3 +77,7 @@ table.dataframe > td {
     overflow-x: auto;
     overflow-y: hidden;
 }
+
+.MathJax_Display #MathJax_Zoom {
+    display: none;
+}

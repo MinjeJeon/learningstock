@@ -38,7 +38,7 @@
 			"   caption='${caption_text}' %}"
 		]
 	},
-		"Insert Youtube video" :{
+	"Insert Youtube video" :{
 		"prefix": "youtube",
 		"body": [
 			"{% include ls/youtube.html",
@@ -48,10 +48,17 @@
 		]
 	},
 
-		"Insert Python Code Block" :{
+	"Insert Python Code Block" :{
 		"prefix": "python_inline",
 		"body": [
 			"`${code}`{: .language-python}"
 		]
-	}
+	},
+
+	"Open in new window" :{
+		"prefix": "newwindow",
+		"body": [
+			"{: target='_blank'}"
+		]
+	}	
 }
