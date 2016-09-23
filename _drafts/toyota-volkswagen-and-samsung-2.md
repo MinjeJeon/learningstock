@@ -1,5 +1,5 @@
 ---
-title: 토요타, 폭스바겐, 그리고 삼성전자(2) - 주요 사건과 주가의 흐름
+title: 토요타, 폭스바겐, 그리고 삼성전자(2) - 토요타 사태의 주가흐름
 categories:
 - 이슈
 tags:
@@ -12,3 +12,7 @@ layout: post
 published: true
 ---
 
+
+{% include ls/image.html
+   src='20160923_toyota_close.svg'
+   alt='토요타 주가 그래프' %}
