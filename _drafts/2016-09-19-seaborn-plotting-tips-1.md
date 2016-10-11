@@ -1,5 +1,5 @@
 ---
-title: seaborn 그래그 그리기 팁
+title: seaborn 그래프 그리기 팁
 categories:
 - category
 tags:
