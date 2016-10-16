@@ -37,7 +37,6 @@ pandas_datareader를 이용하여 애플의 1년치 주가를 받아온다.
 from pandas_datareader import data
 aapl = data.YahooDailyReader('TM','20151001', '20160930', adjust_price=True).read()
 aapl.head()
-
 ```
 
 ```
