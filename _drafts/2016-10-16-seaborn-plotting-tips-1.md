@@ -12,8 +12,9 @@ layout: post
 published: true
 ---
 
-## 그래프 그리기 준비
 
+## 그래프 그리기 준비
+{::comment}
 먼저 기본 import 컨벤션으로 numpy, pandas를 불러온다.
 
 ```python
@@ -21,7 +22,7 @@ import numpy as np
 import pandas as pd
 from pandas import DataFrame, Series
 ```
-
+{:/comment}
 jupyter notebook 내에서 차트가 출력되도록 하고, 출력 형식을 벡터 그래픽인 SVG로 설정하여 확대해도 흐려지지 않게 한다.
 
 ```python
@@ -35,7 +36,7 @@ pandas_datareader를 이용하여 애플의 1년치 주가를 받아온다.
 
 ```python
 from pandas_datareader import data
-aapl = data.YahooDailyReader('TM','20151001', '20160930', adjust_price=True).read()
+aapl = data.YahooDailyReader('AAPL','20151001', '20160930', adjust_price=True).read()
 aapl.head()
 ```
 
@@ -73,18 +74,40 @@ aapl.Close.plot()
    alt='seaborn을 import 한 후 애플 주가 그래프'
    caption='seaborn을 import 한 후 애플 주가 그래프' %}
 
-matplotlib를 임포트한다. 
+제목과 축 설명을 달아주기 위해 아래와 같이 입력한다.
+
+```python
+ax = aapl.Close.plot(title='애플 주가')
+ax.set_ylabel('주가(달러)')
+```
+
+{% include ls/image.html
+   src='20161016_add-title.svg'
+   alt='제목 추가'
+   caption='제목을 추가했는데... ???' %}
+
+## matplotlib 한글 사용 설정
+
+matplotlib에서는 한글 폰트를 기본적으로 로드하지 않는다. matplotlib의 설정에서 한글이 있는 폰트를 지정하면 한글을 정상적으로 볼 수 있다.
 
 ```python
 import matplotlib
 import matplotlib.pyplot as plt
-```
 
-matplotlib 한글 사용 설정
-
-```python
+# 한글 폰트 사용시 마이너스 기호가 출력되지 않는 문제 수정
 matplotlib.rcParams['axes.unicode_minus'] = False
-matplotlib.rc('font', family=['NanumBarunGothic', 'Malgun Gothic'])
+
+# 한글 폰트 지정
+matplotlib.rc('font', family=['Malgun Gothic'])
+
+ax = aapl.Close.plot(title='애플 주가')
+ax.set_ylabel('주가(달러)')
 ```
+
+{% include ls/image.html
+   src='20161016_add-title-with-korean-font.svg'
+   alt='한글 설정 후 그래프'
+   caption='한글 설정 후 그래프. 한글이 잘 나온다.' %}
+
 
 
