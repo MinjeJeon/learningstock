@@ -8,6 +8,11 @@ article .text h2, h3 {
     border-bottom: 1px solid lightgray;
 }
 
+body>footer .details h4, .post-footer .details h4 {
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
 p, blockquote{
     margin-bottom: 0.5em;
 }
