@@ -1,6 +1,11 @@
-h2, h3, h4, h5, h6 {
-    margin-top: 1em;
-    margin-bottom: 0.5em;
+article .text h2, h3, h4, h5, h6 {
+    margin-top: 40px;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.7em;
+}
+
+article .text h2, h3 {
+    border-bottom: 1px solid lightgray;
 }
 
 p, blockquote{
