@@ -506,7 +506,7 @@ article .text pre {
     max-width: 100%;
     overflow-x: auto;
     line-height: 1.4em;
-    font-family: Consolas, 'Lucida Console', 'Bitstream Vera Sans Mono', monaco, 'Malgun Gothic', monospace;
+    font-family: Consolas, 'Lucida Console','Ubuntu Mono', 'Bitstream Vera Sans Mono', monaco, 'Malgun Gothic', monospace;
     -webkit-font-smoothing: subpixel-antialiased;
     border: 1px solid #ededee;
     background-color: #f9f9fa;
@@ -533,7 +533,7 @@ article .text code {
     overflow-x: auto;
     padding: 0 5px;
     font-size: 16px;
-    font-family: Consolas, 'Lucida Console', 'Bitstream Vera Sans Mono', monaco, 'Malgun Gothic', monospace;
+    font-family: Consolas, 'Lucida Console','Ubuntu Mono', 'Bitstream Vera Sans Mono', monaco, 'Malgun Gothic', monospace;
     -webkit-font-smoothing: subpixel-antialiased;
     border: 1px solid #ededee;
     background-color: #f9f9fa;
