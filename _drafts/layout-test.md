@@ -8,7 +8,7 @@ layout: post
 published: true
 ---
 
-## 이미지 테스트
+## 이미지 테스트[^fn1]
 
 {% include ls/image.html
    src='test3.jpg'
@@ -41,4 +41,19 @@ $$
 \end{pmatrix}
 $$
 
+This is some text not written in HTML but in another language!
 
+definition term 1
+definition term 2
+: This is the first line. Since the first non-space characters appears in
+column 3, all other lines[^def1] have to be indented 2 spaces (or lazy syntax may
+  be used after an indented line). This tells kramdown that the lines
+  belong to the definition.
+:    This is the another definition for the same term. It uses a
+     different number of spaces for indentation which is okay but
+     should generally be avoided.
+   : The definition marker is indented 3 spaces which is allowed but
+     should also be avoided.
+
+[^fn1]: footnote1
+[^def1]: footnote2
