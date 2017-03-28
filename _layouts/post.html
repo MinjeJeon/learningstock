@@ -30,20 +30,31 @@ body_class: post-template
           {{ content }}
       </div>
 
-      <div class="sharebuttons">
-        <a href="#" onclick="javascript:window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Twitter" >
-          <i class="icon icon-twitter" title="Share on Twitter"></i>
-        </a>
-        <a href="#" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog',  'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Facebook">
-          <i class="icon icon-facebook" title="Share on Facebook"></i>
-        </a>
-        <a href="#" onclick="javascript:window.open('https://story.kakao.com/s/share?url='+encodeURIComponent(document.URL), 'kakaostorysharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" target="_blank" alt="Share on kakaostory">
-          <i class="icon icon-kakaostory" title="Share on kakaostory"></i>
-        </a>
-        <a href="#" onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url='+encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" target="_blank" alt="Share on Naver">
-          <i class="icon icon-naver" title="Share on Naver"></i>
-        </a>
+      <div class="tag_and_buttons">
         
+        <span class = "meta">
+          {% if page.categories.size > 0 %}
+            <a href="{{ site.baseurl }}/category.html#{{ page.categories | first }}"><i class="icon icon-folder"></i>&nbsp;{{ page.categories | first }}</a>&nbsp;&nbsp;/
+          {% endif %}
+          {% for tag in page.tags %}
+            <a href="{{ site.baseurl }}/tag.html#{{ tag }}">#{{ tag }}</a>
+          {% endfor %}
+        </span>
+        
+        <span class="sharebuttons">
+          <a href="#" onclick="javascript:window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Twitter" >
+            <i class="icon icon-twitter" title="Share on Twitter"></i>
+          </a>
+          <a href="#" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog',  'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Facebook">
+            <i class="icon icon-facebook" title="Share on Facebook"></i>
+          </a>
+          <a href="#" onclick="javascript:window.open('https://story.kakao.com/s/share?url='+encodeURIComponent(document.URL), 'kakaostorysharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" target="_blank" alt="Share on kakaostory">
+            <i class="icon icon-kakaostory" title="Share on kakaostory"></i>
+          </a>
+          <a href="#" onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url='+encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" target="_blank" alt="Share on Naver">
+            <i class="icon icon-naver" title="Share on Naver"></i>
+          </a>
+        </span>
       </div>
   </article>
 
