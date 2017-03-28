@@ -29,7 +29,25 @@ body_class: post-template
       <div class="text" id="js-post-content">
           {{ content }}
       </div>
+
+      <div class="sharebuttons">
+        <a href="#" onclick="javascript:window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Twitter" >
+          <i class="icon icon-twitter" title="Share on Twitter"></i>
+        </a>
+        <a href="#" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog',  'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Facebook">
+          <i class="icon icon-facebook" title="Share on Facebook"></i>
+        </a>
+        <a href="#" onclick="javascript:window.open('https://story.kakao.com/s/share?url='+encodeURIComponent(document.URL), 'kakaostorysharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" target="_blank" alt="Share on kakaostory">
+          <i class="icon icon-kakaostory" title="카카오스토리에 공유하기"></i>
+        </a>
+        <a href="#" onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url='+encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Naver">
+          <i class="icon icon-naver" title="네이버에 공유하기"></i>
+        </a>
+        
+      </div>
   </article>
+
+
 
   {% include ls/page_navigation.html %}
 
