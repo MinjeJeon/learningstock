@@ -112,5 +112,12 @@ table.dataframe > td {
 
 .tag_and_buttons > span.sharebuttons {
     font-size: 20px;
-    margin-left: 10px
+    margin-left: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .tag_and_buttons > span.sharebuttons {
+        display: block;
+        margin-top: 15px;
+    }
 }
