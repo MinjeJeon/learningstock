@@ -1,6 +1,10 @@
 _site/
+_drafts/
+drafts/
 .sass-cache
 .jekyll-metadata
 .vscode
 .ipynb_checkpoints
 .DS_Store
+.python_tools
+.tools

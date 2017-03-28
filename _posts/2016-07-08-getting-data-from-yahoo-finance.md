@@ -1,14 +1,14 @@
 ---
 title: 야후 파이낸스 API를 이용하여 주가정보 수집하기
 date: 2016-07-12 19:30
+categories:
+- 정보수집
 tags:
 - yahoo
 - finance
 - python
 - pandas
 - 주가
-categories:
-- 정보수집
 layout: post
 ---
 
@@ -166,3 +166,4 @@ Date
 
 [1556 rows x 6 columns]
 ```
+
