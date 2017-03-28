@@ -1,4 +1,6 @@
-_site
+_site/
 .sass-cache
 .jekyll-metadata
 .vscode
+.ipynb_checkpoints
+.DS_Store

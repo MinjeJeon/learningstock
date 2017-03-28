@@ -1,16 +1,20 @@
 ---
 title: "컴퓨터, 주식을 배우다"
 timezone: Asia/Seoul
+logo: "logo.svg"
+email: i@minje.kr
 collections:
   posts:
     title: Posts
     output: true
-  uploads:
-    title: Uploads
-    output: true
-email: i@minje.kr
-description: 금융정보 분석 및 기계학습을 다루는 블로그입니다 <br><br> Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license.
+description: 금융정보 분석 및 기계학습을 다루는 블로그입니다
 baseurl: "/learningstock"
 url: https://minjejeon.github.io
 github_username: MinjeJeon
 markdown: kramdown
+permalink: /:year/:month/:day/:title.html
+license: Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license.
+excerpt_separator: <!--more-->
+paginate: 15
+
+gems: [jekyll-paginate]

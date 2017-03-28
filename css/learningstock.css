@@ -1,0 +1,97 @@
+article .text h2, h3, h4, h5, h6 {
+    margin-top: 40px;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.7em;
+}
+
+article .text h2, h3 {
+    border-bottom: 1px solid lightgray;
+}
+
+body>footer .details h4, .post-footer .details h4 {
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+p, blockquote{
+    margin-bottom: 0.5em;
+}
+
+.text figure {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+    max-width: 90%;
+    margin-bottom: 20px
+}
+
+.text figure > img { display: block; margin-bottom: 2px;}
+.text figure > figcaption { display: table-caption; caption-side: bottom; }
+
+div .youtube-container {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5em;
+}
+
+.youtube-video {
+    position: relative;
+    padding-bottom: 50.625%;
+}
+
+.youtube-video > iframe { 
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+}
+
+table.dataframe  {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+table.dataframe > th { 
+    text-align: center;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+ }
+
+table.dataframe > td {
+        padding-left: 0.3em;
+        padding-right: 0.3em;
+}
+
+.PageNavigation {
+  font-size: 14px;
+  display: block;
+  width: auto;
+  overflow: hidden;
+}
+
+.PageNavigation div {
+  display: block;
+  width: 50%;
+  float: left;
+  margin: 1em 0;
+}
+
+.PageNavigation .next {
+  text-align: right;
+}
+
+.MathJax_Display{
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.MathJax_Display #MathJax_Zoom {
+    display: none;
+}
+
+.addthis_inline_share_toolbox {
+    text-align: center;
+}

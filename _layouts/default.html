@@ -3,17 +3,16 @@
 
   {% include head.html %}
 
-  <body>
+  <body class="{{ page.body_class }}">
 
-    {% include header.html %}
+    {{ content }}
 
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </div>
-
-    {% include footer.html %}
+    {% if site.logo %}
+    <a href="{{ site.baseurl | prepend: site.url }}" id="blog_badge">
+            <span style="background-image:
+            url('{{ site.baseurl }}/assets/images/{{ site.logo }}');">{{ site.name }}</span>
+        </a>
+    {% endif %}
 
   </body>
 

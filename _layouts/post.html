@@ -1,41 +1,70 @@
 ---
 layout: default
+body_class: post-template
 ---
+{% if page.image %}
+<div id="feature_image">
+  <div class="inner" style="background-image: url('{{ site.baseurl }}/images//{{ page.image }}')">
+    <img src='{{ site.baseurl }}/images/{{ page.image }}'>
+    </div>
+</div>
+{% endif %}
+<div id="container">
+  <article role="main" class="{% if page.image %}image{% endif %}">
+      <header>
+        <a href="{{ site.baseurl }}/" id="home_link">«</a>
+        <div class="meta">
+          <time datetime="{{ page.date | date:'%Y-%m-%d' }}">{{ page.date | date: "%B %d, %Y" }}</time>
+          {% if page.categories.size > 0 %}
+            <span>in <a href="{{ site.baseurl }}/category.html#{{ page.categories | first }}">{{ page.categories | first }}</a>&nbsp;&nbsp;/</span>
+          {% endif %}
+          {% for tag in page.tags %}
+            <span><a href="{{ site.baseurl }}/tag.html#{{ tag }}">#{{ tag }}</a>
+          {% endfor %}
+          <span class="count" id="js-reading-time">&nbsp;</span>
+        </div>
+        <h1>{{ page.title }}</h1>
+      </header>
 
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="text" id="js-post-content">
+          {{ content }}
+      </div>
+      <!-- www.addthis.com share buttons -->
+      <div class="addthis_inline_share_toolbox"></div>
+  </article>
 
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
-  </header>
+  {% include ls/page_navigation.html %}
 
-  <div class="post-content" itemprop="articleBody">
-    {{ content }}
-  </div>
+  {% include ls/disqus.html %}
 
-</article>
+</div>
 
-{% unless page.disable_comments %}
-  <div id="disqus_thread"></div>
-  <script>
-      /**
-       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-       */
+{% include footer.html %}
 
-      var disqus_config = function () {
-          this.page.url = '{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}';  // Replace PAGE_URL with your page's canonical URL variable
-          this.page.identifier = '{{ page.url }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-      };
+<script>
+$('#js-post-content').load(reading_time());
+function get_text(el) {
+  ret = "";
+  var length = el.childNodes.length;
+  for(var i = 0; i < length; i++) {
+    var node = el.childNodes[i];
+    if(node.nodeType != 8) {
+      ret += node.nodeType != 1 ? node.nodeValue : get_text(node);
+    }
+  }
+  return ret;
+}
+function reading_time () {
+  var post_content = document.getElementById('js-post-content');
+  if (post_content) {
+    var words = get_text(post_content),
+      count = words.split(/\s+/).length,
+    read_time = Math.ceil((count / 150)),
+        read_time_node = document.createTextNode('/\u00A0\u00A0' + read_time + ' min read');
+    document.getElementById('js-reading-time').appendChild(read_time_node);
+  }
+}
+</script>
 
-      (function() {  // DON'T EDIT BELOW THIS LINE
-          var d = document, s = d.createElement('script');
-          
-          s.src = '//learningstock.disqus.com/embed.js';
-          
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-      })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-{% endunless %}
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script async type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58da58309e118810"></script>
