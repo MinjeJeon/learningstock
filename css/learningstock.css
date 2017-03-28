@@ -91,3 +91,7 @@ table.dataframe > td {
 .MathJax_Display #MathJax_Zoom {
     display: none;
 }
+
+.addthis_inline_share_toolbox {
+    text-align: center;
+}
