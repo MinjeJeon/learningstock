@@ -92,9 +92,25 @@ table.dataframe > td {
     display: none;
 }
 
-.sharebuttons {
+.tag_and_buttons {
     text-align: center;
     color: #999;
-    font-size: 1.5em;
     margin-bottom: 15px;
+}
+
+.tag_and_buttons > span.meta {
+    font-size: 14px;
+}
+
+.tag_and_buttons a {
+    color: #999;
+}
+
+.tag_and_buttons a:hover {
+    color: #d35c5c;
+}
+
+.tag_and_buttons > span.sharebuttons {
+    font-size: 20px;
+    margin-left: 10px
 }
