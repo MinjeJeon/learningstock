@@ -19,7 +19,10 @@ image: 20160830_33b8a1ec_colord-sane-screenshot2.png
 
 이 오류는 컴퓨터를 켤 때마다 매번 나오고, 시차들 두고 두번 튀어나와서 사람을 짜증나게 만들어준다. 앞으로 이런 오류를 무시한다고 해도 또! 또! 나온다
 
-```colord-sane assert failure: colord-sane: simple-watch.c:454: avahi_simple_poll_prepare: Assertion `s->state == STATE_INIT || s->state == STATE_DISPATCHED || s->state == STATE_FAILURE' failed.
+```
+colord-sane assert failure: colord-sane: simple-watch.c:454:
+avahi_simple_poll_prepare: Assertion `s->state == STATE_INIT ||
+s->state == STATE_DISPATCHED || s->state == STATE_FAILURE' failed.
 ```
 
 {% include ls/image.html
