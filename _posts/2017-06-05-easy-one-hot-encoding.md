@@ -2,10 +2,11 @@
 title: One-hot 인코딩 쉽게 하기
 date: 2017-06-05 19:25 +0900
 categories:
-- 데이터 정제
+- 데이터
 tags:
 - pandas
 - python
+- 데이터 정제
 layout: post
 published: true
 ---
