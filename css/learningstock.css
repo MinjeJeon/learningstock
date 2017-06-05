@@ -121,3 +121,13 @@ table.dataframe > td {
         margin-top: 15px;
     }
 }
+
+article .text table.center_table {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+article .text table.narrow_padding td {
+    padding: 7px;
+}
