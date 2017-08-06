@@ -56,7 +56,8 @@ gender = '남성 여성'.split()
 
 # 100개의 가짜 데이터 생성, itertools.cycle 함수로 각 요소를 순환시킵니다.
 fake_data = zip(range(100), cycle(area), cycle(college), cycle(gender))
-hundred_students = DataFrame([data for num, *data in fake_data], columns='지역 단과대 성별'.split())
+hundred_students = DataFrame([data for num, *data in fake_data],
+                              columns='지역 단과대 성별'.split())
 hundred_students.head(10)
 ```
 
