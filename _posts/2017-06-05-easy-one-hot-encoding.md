@@ -2,10 +2,11 @@
 title: One-hot 인코딩 쉽게 하기
 date: 2017-06-05 19:25 +0900
 categories:
-- 데이터 정제
+- 데이터
 tags:
 - pandas
 - python
+- 데이터 정제
 layout: post
 published: true
 ---
@@ -23,7 +24,7 @@ published: true
 
 아직까지 머신 러닝에 있어 사람의 역할이 많이 중요하다고 볼 수 있는 부분이죠. 각 변수의 성질을 파악하여 적절하게 숫자로 변환해 주는 과정은 아직은 컴퓨터가 수행하기 어렵다고 생각합니다.
 
-통계학에서는 몇 가지로 분류할 수 있는 데이터를 범주형 변수라고 하는데요. 범주형 변수를 머신 러닝에 활용할 때는 One-hot 인코딩이라고 해서 해당하는 칸의 정보를 1로 표시하고 나머지는 0으로 표시하는 방법을 많이 사용합니다.
+통계학에서는 몇 가지로 분류할 수 있는 데이터를 범주형 변수라고 하는데요. 범주형 변수를 머신 러닝에 활용할 때는 원-핫(One-hot) 인코딩이라고 해서 해당하는 칸의 정보를 1로 표시하고 나머지는 0으로 표시하는 방법을 많이 사용합니다.
 
 {% include ls/image.html
    src='20170605_one_hot_encoding_excel.jpg'
@@ -55,7 +56,8 @@ gender = '남성 여성'.split()
 
 # 100개의 가짜 데이터 생성, itertools.cycle 함수로 각 요소를 순환시킵니다.
 fake_data = zip(range(100), cycle(area), cycle(college), cycle(gender))
-hundred_students = DataFrame([data for num, *data in fake_data], columns='지역 단과대 성별'.split())
+hundred_students = DataFrame([data for num, *data in fake_data],
+                              columns='지역 단과대 성별'.split())
 hundred_students.head(10)
 ```
 
