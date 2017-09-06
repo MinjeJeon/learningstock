@@ -1,2 +1,9 @@
 #!/bin/sh
 rm -rf $PWD/_drafts
+rm -rf $PWD/_site
+rm -rf $PWD/drafts
+rm -rf $PWD/python_tools
+rm -rf $PWD/.sass-cache
+rm -rf $PWD/.vscode
+rm -rf $PWD/tools
+git add -A
