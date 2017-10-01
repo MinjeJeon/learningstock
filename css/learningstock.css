@@ -132,12 +132,23 @@ article .text table.narrow_padding td {
     padding: 7px;
 }
 
-.search_template table {
-    border-collapse: inherit;
+.search_template .search_result {
+    line-height: 130%;
+    max-width: 680px;
+    margin: 0 auto
 }
 
-.search_template .gs-result {
-    line-height: 130%;
+.search_template article h1 {
+    padding: 0 8px;
+}
+
+.search_template .gsc-control-cse {
+    margin: 0;
+    padding: 0;
+}
+
+.search_template table {
+    border-collapse: inherit;
 }
 
 .search_template .gs-result .gs-title {
@@ -145,3 +156,4 @@ article .text table.narrow_padding td {
     height: inherit;
     line-height: 130%;
 }
+
