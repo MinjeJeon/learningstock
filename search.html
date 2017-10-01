@@ -1,0 +1,37 @@
+---
+title: 검색 결과
+layout: search_template
+body_class: search_template
+---
+
+<script>
+    function getUrlVars()
+    {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+    $(document).ready(function(){
+        var txt = "'" + decodeURIComponent(getUrlVars()['query']) + "' - 검색 결과"
+        var txtwithsitetitle = txt + ' - ' + site_title
+        $("#page_title").text(txt);
+        $('meta[name="og:title"]').attr('content', txtwithsitetitle);
+        document.title = txtwithsitetitle;
+    });
+    (function() {
+      var cx = '010521674026999917260:f2pzega7bfo';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    })();
+  </script>
+  <gcse:searchresults-only></gcse:searchresults-only>

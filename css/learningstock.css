@@ -131,3 +131,17 @@ article .text table.center_table {
 article .text table.narrow_padding td {
     padding: 7px;
 }
+
+.search_template table {
+    border-collapse: inherit;
+}
+
+.search_template .gs-result {
+    line-height: 130%;
+}
+
+.search_template .gs-result .gs-title {
+    margin-bottom: 0.4em;
+    height: inherit;
+    line-height: 130%;
+}
