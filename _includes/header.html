@@ -11,11 +11,15 @@
       <a class="page-link" href="{{ site.baseurl }}/tag.html">Tags</a>
       {% for page in site.pages %}
         {% if page.title %}
-          {% unless page.title == 'Categories' or page.title == 'Tags'%}
+          {% unless page.title == 'Categories' or page.title == 'Tags' or page.title == '검색 결과' %}
             <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
           {% endunless %}
         {% endif %}
       {% endfor %}
+      <form id="searchform" class="searchbox" action="#">
+        <span><i class="icon icon-magnifier"></i></span>
+        <input id="searchtext" name="searchtext" type="text" placeholder="Search...">
+      </form>
     </div>
     </nav>
 

@@ -5,9 +5,20 @@
     <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | escape | truncate: 250 }}{% else %}{{ site.description }}{% endif %}">
     <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     {% if page.image %}
-    <meta property="og:image" content="{{ site.baseurl | prepend: site.url }}/images/{{ page.image }}">
+    <meta property="og:image" content="{{ "/images/" | prepend: site.baseurl }}{{ page.image }}">
     {% endif %}
     
+    <!-- 커스텀 스크립트 -->
+    <script>
+        var site_title = "{{ site.title }}";
+        $(document).ready(function(){
+            $("#searchform").on("submit", function(e){
+                e.preventDefault();
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "{{ "/search.html?query=" | prepend: site.baseurl }}" + url;
+            });
+        });
+    </script>
 
     <!-- MathJax -->
     <script type="text/javascript">
