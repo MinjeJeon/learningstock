@@ -1,3 +1,37 @@
+nav form {
+    display: inline-block;
+}
+
+nav a {
+    vertical-align: middle;
+}
+
+@media only screen and (max-width: 600px) {
+    nav form {
+        margin-top: 10px;
+    }
+}
+
+form.searchbox {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 3px;
+    vertical-align: middle;
+}
+
+form.searchbox span {
+    vertical-align: middle;
+    color: lightgray
+}
+
+form.searchbox input {
+    border-style: none;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    width: 100px;
+}
+
 article .text h2, h3, h4, h5, h6 {
     margin-top: 40px;
     padding-bottom: 0.3em;
