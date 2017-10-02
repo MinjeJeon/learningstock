@@ -1,13 +1,25 @@
-nav form {
-    display: inline-block;
-}
-
 nav a {
     vertical-align: middle;
 }
 
+nav form.searchbox {
+    margin-top: 0px
+}
+
+.home {
+    vertical-align: top;
+}
+.home, .home_contents{
+    display: inline-block;
+}
+
+.home_contents form.searchbox {
+    display: block;
+    max-width: 230px;
+}
+
 @media only screen and (max-width: 600px) {
-    nav form {
+    nav form.searchbox {
         margin-top: 10px;
     }
 }
@@ -16,7 +28,9 @@ form.searchbox {
     border: 1px solid lightgray;
     border-radius: 5px;
     padding: 3px;
+    margin-top: 10px;
     vertical-align: middle;
+    display: inline-block
 }
 
 form.searchbox span {
@@ -25,11 +39,19 @@ form.searchbox span {
 }
 
 form.searchbox input {
+    width: 200px;
     border-style: none;
     margin: 0;
     padding: 0;
     vertical-align: middle;
-    width: 100px;
+}
+
+nav form.searchbox input {
+    max-width: 100px;
+}
+
+form.searchbox input::placeholder {
+    color: grey;
 }
 
 article .text h2, h3, h4, h5, h6 {
