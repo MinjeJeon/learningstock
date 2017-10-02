@@ -1,6 +1,6 @@
 ---
 layout: default
-body_class: post-template
+body_class: post_template
 ---
 {% if page.image %}
 <div id="feature_image">
@@ -12,16 +12,24 @@ body_class: post-template
 <div id="container">
   <article role="main" class="{% if page.image %}image{% endif %}">
       <header>
-        <a href="{{ site.baseurl }}/" id="home_link">«</a>
-        <div class="meta">
-          <time datetime="{{ page.date | date:'%Y-%m-%d' }}">{{ page.date | date: "%B %d, %Y" }}</time>
-          {% if page.categories.size > 0 %}
-            <span>in <a href="{{ site.baseurl }}/category.html#{{ page.categories | first }}">{{ page.categories | first }}</a>&nbsp;&nbsp;/</span>
-          {% endif %}
-          {% for tag in page.tags %}
-            <span><a href="{{ site.baseurl }}/tag.html#{{ tag }}">#{{ tag }}</a>
-          {% endfor %}
-          <span class="count" id="js-reading-time">&nbsp;</span>
+        <div class="home">
+          <a href="{{ site.baseurl }}/" id="home_link">«</a>
+        </div>
+        <div class="home_contents">
+          <div class="meta">
+            <time datetime="{{ page.date | date:'%Y-%m-%d' }}">{{ page.date | date: "%B %d, %Y" }}</time>
+            {% if page.categories.size > 0 %}
+              <span>in <a href="{{ site.baseurl }}/category.html#{{ page.categories | first }}">{{ page.categories | first }}</a>&nbsp;&nbsp;/</span>
+            {% endif %}
+            {% for tag in page.tags %}
+              <span><a href="{{ site.baseurl }}/tag.html#{{ tag }}">#{{ tag }}</a>
+            {% endfor %}
+            <span class="count" id="js-reading-time">&nbsp;</span>
+          </div>
+          <form id="searchform" class="searchbox" action="#">
+              <span><i class="icon icon-magnifier"></i></span>
+              <input id="searchtext" name="searchtext" type="text" placeholder="Search in 컴퓨터, 주식을 배우다">
+          </form>
         </div>
         <h1>{{ page.title }}</h1>
       </header>
