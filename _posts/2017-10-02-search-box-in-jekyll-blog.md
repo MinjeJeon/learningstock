@@ -1,5 +1,5 @@
 ---
-title: jekyll 블로그에서 google custom search engine으로 검색창 만들기
+title: jekyll 블로그에서 구글 맞춤검색으로 검색창 만들기
 date: 2017-10-02 13:24 +0900
 categories:
 - blogging
