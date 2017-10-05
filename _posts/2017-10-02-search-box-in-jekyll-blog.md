@@ -91,7 +91,6 @@ github pages의 장점은 아무래도 '**기술스러운** 느낌을 줄 수 �
     </form>
     <!-- 검색어 submit 이벤트 처리 -->
     <script>
-      var site_title = "{{ site.title }}";
       $(document).ready(function(){
         $("#searchform").on("submit", function(e){
           e.preventDefault();
