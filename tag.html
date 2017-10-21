@@ -10,7 +10,7 @@ body_class: "tag-template user"
     </header>
 </article>
 
-{% for tag in site.tags %}
+{% for tag in site.tags reversed %}
 {% assign nposts = tag | last | size %}
 <div id="{{ tag | first | escape }}" class="collection" data-name="{{ tag | first | escape }}">
     <h1><a href="#{{ tag | first }}">{{ tag | first }}</a><span class="nposts">{{ nposts }} post{% if nposts != 1 %}s{% endif %}</span></h1>
