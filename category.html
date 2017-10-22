@@ -10,7 +10,7 @@ body_class: "category-template user"
     </header>
 </article>
 
-{% for category in site.categories %}
+{% for category in site.categories reversed %}
 {% assign nposts = category | last | size %}
 <div id="{{ category | first | escape }}" class="collection" data-name="{{ category | first | escape }}">
     <h1><a href="#{{ category | first }}">{{ category | first }}</a><span class="nposts">{{ nposts }} post{% if nposts != 1 %}s{% endif %}</span></h1>
