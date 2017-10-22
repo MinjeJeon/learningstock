@@ -1,9 +1,8 @@
 #!/bin/sh
-rm -rf $PWD/_drafts
-rm -rf $PWD/_site
-rm -rf $PWD/python_tools
-rm -rf $PWD/.sass-cache
-rm -rf $PWD/.vscode
-rm -rf $PWD/tools
-rm -rf $PWD/notebooks/drafts
-git add -A
+git rm -rf --ignore-unmatch --cached $PWD/_drafts
+git rm -rf --ignore-unmatch --cached $PWD/_site
+git rm -rf --ignore-unmatch --cached $PWD/python_tools
+git rm -rf --ignore-unmatch --cached $PWD/.sass-cache
+git rm -rf --ignore-unmatch --cached $PWD/.vscode
+git rm -rf --ignore-unmatch --cached $PWD/tools
+git rm -rf --ignore-unmatch --cached $PWD/notebooks/drafts
