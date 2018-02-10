@@ -10,7 +10,7 @@ image: 20171203_altair_cars.png
 published: true
 ---
 
-데이터 사이언스에서 R과 파이썬은 영원한 라이벌이죠. R이 좋냐 파이썬이 좋냐는 업계에서 "엄마가 좋니 아빠가 좋니?" 급의 논쟁거리입니다. 이런 종류의 글만 나오면 R언어 신봉자와 파이썬 언어 신봉자들이 득달같이 달려들어서 클릭 수를 올리려는 낚시성 글도 많이 올라온다고 하네요. 이 주제에 대해 파이썬의 우세를 점치는 최근 몇 가지의 흥미로운 글이 있습니다.
+데이터 사이언스에서 R과 파이썬은 영원한 라이벌이죠. R이 좋냐 파이썬이 좋냐는 업계에서 "엄마가 좋니 아빠가 좋니?" 급의 논쟁거리입니다. 이런 종류의 글만 나오면 R언어 신봉자와 파이썬 언어 신봉자들이 득달같이 달려들기 때문에 클릭 수를 올리려는 낚시성 글도 많이 올라온다고 하네요. 이 주제에 대해 파이썬의 우세를 점치는 최근 몇 가지의 흥미로운 글이 있습니다.
 
 * [캐글 블로그 - 2016년 제출된 Kernel 수에서 파이썬은 명백한 승자](http://blog.kaggle.com/2017/01/05/your-year-on-kaggle-most-memorable-community-stats-from-2016/#kernels-datasets)
 * [KDnuggets - Python이 R을 추월하고 데이터 과학, 기계학습 플랫폼의 리더가 되다.](https://www.kdnuggets.com/2017/08/python-overtakes-r-leader-analytics-data-science.html)
