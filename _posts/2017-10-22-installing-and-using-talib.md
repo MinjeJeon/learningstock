@@ -74,7 +74,7 @@ talib_ma5 = ta.MA(sillajen, timeperiod=5)
 # pandas 기능을 이용하여 5기간 이동평균 계산
 pandas_ma5 = sillajen.close.rolling(window=5).mean() 
 
-talib_ma5.equals(numpy_ma5)
+talib_ma5.equals(pandas_ma5)
 # True / 결과는 같음  
 ```
 
