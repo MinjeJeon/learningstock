@@ -18,11 +18,37 @@ nav form.searchbox {
     max-width: 230px;
 }
 
+
+article .text ul, article .text ul li, article .text ol li {
+    padding-right: 0px;
+    margin-right: 0px;
+}
+
+@media only screen and (max-width: 480px) {
+    article .text ul {
+        padding-left: 5px;
+    }
+    article .text ul, article .text ul li, article .text ol li {
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     nav form.searchbox {
         margin-top: 10px;
     }
+    article .text ul {
+        padding-left: 5px;
+    }
+    article .text ul, article .text ul li, article .text ol li {
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
 }
+
 
 form.searchbox {
     border: 1px solid lightgray;
